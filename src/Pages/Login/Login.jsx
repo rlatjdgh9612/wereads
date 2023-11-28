@@ -7,10 +7,10 @@ const Login = () => {
       <div className="login">
         <div className="userFrame">
           <div className="imageFrame">
-            <img className="logo" src="/../images/Logo.svg" alt="위코드 로고" />
+            <img className="logo" src="/images/Logo.svg" alt="위코드 로고" />
             <img
               className="logo"
-              src="/../images/logo_wecode.svg"
+              src="/images/logo_wecode.svg"
               alt="위코드 로고"
             />
           </div>

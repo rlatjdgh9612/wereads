@@ -38,7 +38,8 @@
       border-radius: 6px;
       margin-top: 10px;
       background-color: #2d71f7;
-      font-weight: 800;
+      font-weight: 700;
+      font-size: 16px;
       cursor: pointer;
       color: white;
     }
@@ -46,7 +47,6 @@
 
   .buttonWrapper {
     display: flex;
-    flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
     margin: 15px 15px 0 40px;
