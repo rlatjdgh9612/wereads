@@ -1,0 +1,257 @@
+.signup {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .titleText {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 25px;
+  }
+
+  .signupInputFrame {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .backButtonFrame {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 30px;
+
+      .backIcon {
+        width: 30px;
+        margin: 0 -5px 2px 0;
+      }
+
+      .backButton {
+        border: none;
+        background: none;
+        font-size: 17px;
+        cursor: pointer;
+      }
+    }
+
+    .infoTextFrame {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 10px;
+
+      .infoText {
+        font-size: 14px;
+        font-weight: 400;
+      }
+
+      .requiredText {
+        font-size: 12px;
+        font-weight: 400;
+        color: red;
+      }
+    }
+
+    .signupInput {
+      width: 450px;
+      padding: 15px;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      margin-top: 7px;
+      &::placeholder {
+        color: #999999;
+      }
+    }
+
+    .etcUserFrame {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .nicknameTextFrame {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 25px;
+
+        .nicknameText {
+          font-size: 14px;
+          font-weight: 400;
+        }
+
+        .selectText {
+          font-size: 12px;
+          font-weight: 400;
+          color: #999999;
+        }
+      }
+
+      .nicknameInput {
+        width: 450px;
+        padding: 15px;
+        border: 1px solid #e0e0e0;
+        border-radius: 6px;
+        margin-top: 13px;
+
+        &::placeholder {
+          color: #999999;
+        }
+      }
+
+      .signupButtonFrame {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 80px;
+
+        .signupButton {
+          width: 450px;
+          padding: 15px;
+          border: none;
+          border-radius: 6px;
+          background-color: #2d71f7;
+          font-weight: 600;
+          font-size: 16px;
+          color: white;
+          cursor: pointer;
+        }
+      }
+
+      .fileFrame {
+        display: flex;
+        flex-direction: row;
+
+        .fileButton {
+          width: 96px;
+          height: 40px;
+          border: 1px solid #999999;
+          border-radius: 4px;
+          background: none;
+          margin-top: 7px;
+          cursor: pointer;
+        }
+
+        .fileInput {
+          width: 347px;
+          padding: 15px;
+          height: 40px;
+          margin-top: 7px;
+          margin-left: 7px;
+          border: 1px solid #e0e0e0;
+          border-radius: 4px;
+
+          &::placeholder {
+            color: #999999;
+          }
+        }
+      }
+
+      .phonenumberFrame {
+        display: flex;
+        flex-direction: column;
+
+        .phonenumberTextFrame {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          margin-top: 25px;
+
+          .phonenumberText {
+            font-size: 14px;
+            font-weight: 400;
+          }
+
+          .selectText {
+            font-size: 12px;
+            font-weight: 400;
+            color: #999999;
+          }
+        }
+
+        .phoneSelectFrame {
+          display: flex;
+          flex-direction: row;
+
+          .phoneSelectBox {
+            width: 130px;
+            padding: 15px;
+            margin-top: 13px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            color: #999999;
+          }
+
+          .phonenumberInput {
+            width: 310px;
+            padding: 15px;
+            margin-top: 13px;
+            margin-left: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            &::placeholder {
+              color: #999999;
+            }
+          }
+        }
+      }
+
+      .birthdayFrame {
+        display: flex;
+        flex-direction: column;
+
+        .birthdayTextFrame {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          margin-top: 25px;
+
+          .birthdayText {
+            font-size: 14px;
+            font-weight: 400;
+          }
+
+          .selectText {
+            font-size: 12px;
+            font-weight: 400;
+            color: #999999;
+          }
+        }
+
+        .birthdaySelectFrame {
+          display: flex;
+          flex-direction: row;
+
+          .yearSelectBox {
+            width: 130px;
+            padding: 15px;
+            margin-top: 13px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            color: #999999;
+          }
+
+          .monthSelectBox {
+            width: 150px;
+            padding: 15px;
+            margin-top: 13px;
+            margin-left: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            color: #999999;
+          }
+
+          .daySelectBox {
+            width: 150px;
+            padding: 15px;
+            margin-top: 13px;
+            margin-left: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            color: #999999;
+          }
+        }
+      }
+    }
+  }
+}
