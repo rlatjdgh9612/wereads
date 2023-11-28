@@ -1,7 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Signup.scss';
 
+// 생일 데이터 : 년,월,일
+const BIRTHDAY_YEAR_LIST = Array.from(
+  { length: 15 },
+  (_, i) => `${i + 1990}년`,
+);
+const BIRTHDAY_MONTH_LIST = Array.from({ length: 12 }, (_, i) => `${i + 1}월`);
+const BIRTHDAY_DAY_LIST = Array.from({ length: 31 }, (_, i) => `${i + 1}일`);
+// 휴대폰 데이터 : (010)
+const PHONENUMBER_LIST = ['010', '011', '016', '018', '019'];
+
 const Signup = () => {
+  const [imageName, setImageName] = useState('');
+  const handleFileChange = event => {
+    const file = event.target.files[0];
+    if (file) {
+      setImageName(file.name);
+    }
+  };
+
   return (
     <div>
       <div className="signup">
@@ -29,8 +47,24 @@ const Signup = () => {
             </div>
             <input className="nicknameInput" type="text" placeholder="닉네임" />
             <div className="fileFrame">
-              <button className="fileButton">파일 선택</button>
-              <input className="fileInput" placeholder="파일을 선택해 주세요" />
+              <label htmlFor="fileInput" className="fileButton">
+                <span className="fileButtonText">파일 선택</span>
+                <input
+                  id="fileInput"
+                  className="fileInput"
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  placeholder="파일을 선택해 주세요"
+                  style={{ display: 'none' }}
+                />
+              </label>
+              <input
+                className="fileInput"
+                placeholder="파일을 선택해 주세요"
+                value={imageName}
+                readOnly
+              />
             </div>
             <div className="phonenumberFrame">
               <div className="phonenumberTextFrame">
@@ -39,13 +73,15 @@ const Signup = () => {
               </div>
               <div className="phoneSelectFrame">
                 <select className="phoneSelectBox">
-                  <option>010</option>
+                  {PHONENUMBER_LIST.map((number, index) => (
+                    <option key={index}>{number}</option>
+                  ))}
                 </select>
                 <input
                   className="phonenumberInput"
                   type="text"
                   placeholder="휴대폰 번호를 입력해주세요"
-                ></input>
+                />
               </div>
             </div>
             <div className="birthdayFrame">
@@ -55,13 +91,19 @@ const Signup = () => {
               </div>
               <div className="birthdaySelectFrame">
                 <select className="yearSelectBox">
-                  <option>1990년</option>
+                  {BIRTHDAY_YEAR_LIST.map((year, index) => (
+                    <option key={index}>{year}</option>
+                  ))}
                 </select>
                 <select className="monthSelectBox">
-                  <option>1월</option>
+                  {BIRTHDAY_MONTH_LIST.map((month, index) => (
+                    <option key={index}>{month}</option>
+                  ))}
                 </select>
                 <select className="daySelectBox">
-                  <option>1일</option>
+                  {BIRTHDAY_DAY_LIST.map((day, index) => (
+                    <option key={index}>{day}</option>
+                  ))}
                 </select>
               </div>
             </div>
