@@ -1,15 +1,7 @@
 import React, { useState } from 'react';
+import UserInput from '../../Components/UserInput';
+import UserButton from '../../Components/UserButton';
 import './Signup.scss';
-
-// 생일 데이터 : 년,월,일
-const BIRTHDAY_YEAR_LIST = Array.from(
-  { length: 15 },
-  (_, i) => `${i + 1990}년`,
-);
-const BIRTHDAY_MONTH_LIST = Array.from({ length: 12 }, (_, i) => `${i + 1}월`);
-const BIRTHDAY_DAY_LIST = Array.from({ length: 31 }, (_, i) => `${i + 1}일`);
-// 휴대폰 데이터 : (010)
-const PHONENUMBER_LIST = ['010', '011', '016', '018', '019'];
 
 const Signup = () => {
   const [imageName, setImageName] = useState('');
@@ -33,11 +25,15 @@ const Signup = () => {
             <p className="infoText">기본 정보</p>
             <p className="requiredText">필수 사항</p>
           </div>
-          <input className="signupInput" type="text" placeholder="이메일" />
-          <input className="signupInput" type="text" placeholder="비밀번호" />
-          <input
+          <UserInput className="signupInput" type="text" placeholder="이메일" />
+          <UserInput
             className="signupInput"
-            type="text"
+            type="password"
+            placeholder="비밀번호"
+          />
+          <UserInput
+            className="signupInput"
+            type="password"
             placeholder="비밀번호 확인"
           />
           <div className="etcUserFrame">
@@ -108,7 +104,7 @@ const Signup = () => {
               </div>
             </div>
             <div className="signupButtonFrame">
-              <button className="signupButton">회원 가입</button>
+              <UserButton className="signupButton" text="회원 가입" />
             </div>
           </div>
         </div>
@@ -118,3 +114,13 @@ const Signup = () => {
 };
 
 export default Signup;
+
+// 생일 데이터 : 년,월,일
+const BIRTHDAY_YEAR_LIST = Array.from(
+  { length: 15 },
+  (_, i) => `${i + 1990}년`,
+);
+const BIRTHDAY_MONTH_LIST = Array.from({ length: 12 }, (_, i) => `${i + 1}월`);
+const BIRTHDAY_DAY_LIST = Array.from({ length: 31 }, (_, i) => `${i + 1}일`);
+// 휴대폰 데이터 : (010)
+const PHONENUMBER_LIST = ['010', '011', '016', '018', '019'];
