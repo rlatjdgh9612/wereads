@@ -13,7 +13,7 @@ const Signup = () => {
   };
 
   return (
-    <div>
+    <>
       <div className="signup">
         <div className="signupInputFrame">
           <div className="backButtonFrame">
@@ -51,7 +51,6 @@ const Signup = () => {
                   type="file"
                   accept="image/*"
                   onChange={handleFileChange}
-                  placeholder="파일을 선택해 주세요"
                   style={{ display: 'none' }}
                 />
               </label>
@@ -109,7 +108,7 @@ const Signup = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
