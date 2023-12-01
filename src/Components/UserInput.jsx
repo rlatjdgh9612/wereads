@@ -2,8 +2,15 @@
 import React from 'react';
 import './UserInput.scss';
 
-const UserInput = ({ type, placeholder }) => {
-  return <input className="userInput" type={type} placeholder={placeholder} />;
+const UserInput = ({ className, type, placeholder, onChange }) => {
+  return (
+    <input
+      className={`userInput ${className}`}
+      type={type}
+      placeholder={placeholder}
+      onChange={onChange}
+    />
+  );
 };
 
 export default UserInput;
