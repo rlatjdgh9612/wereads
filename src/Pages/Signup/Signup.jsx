@@ -188,7 +188,7 @@ const Signup = () => {
               disabled={!isInvaild}
               onClick={goToComplete}
               text="회원 가입"
-            ></UserButton>
+            />
           </div>
         </div>
       </div>
