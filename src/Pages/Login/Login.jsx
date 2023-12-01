@@ -19,6 +19,16 @@ const Login = () => {
   // 유효성 검사
   const isInvaild =
     email.includes('@') && email.includes('.') && password.length >= 10;
+  // 페이지 이동
+  const moveNavigate = useNavigate();
+  // 회원가입 페이지 이동
+  const goToSignup = () => {
+    moveNavigate('/signup');
+  };
+  // 로그인 버튼 클릭시 메인 페이지로 이동
+  const goToMain = () => {
+    moveNavigate('/Main');
+  };
 
   return (
     <div className="login">
@@ -36,10 +46,13 @@ const Login = () => {
         <UserButton
           className="loginButton"
           text="로그인"
-          // disabled={!isInvaild}
+          disabled={!isInvaild}
+          onClick={goToMain}
         />
         <div className="buttonWrapper">
-          <button className="actionButton">회원 가입</button>
+          <button className="actionButton" onClick={goToSignup}>
+            회원 가입
+          </button>
           <div className="wall">|</div>
           <button className="actionButton">비밀번호 찾기</button>
         </div>
