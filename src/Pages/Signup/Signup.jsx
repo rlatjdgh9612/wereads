@@ -9,6 +9,7 @@ const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfir, setPasswordConfir] = useState('');
+  // 유저 정보(선택 사항)
   const [nickname, setNickname] = useState('');
   // 이미지 업로드
   const [imageName, setImageName] = useState('');
@@ -50,7 +51,7 @@ const Signup = () => {
   };
   // 회원가입 완료 페이지 이동
   const goToComplete = () => {
-    fetch('http://10.58.52.241:8000/users/sign-up', {
+    fetch('/data/Signup.json', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
