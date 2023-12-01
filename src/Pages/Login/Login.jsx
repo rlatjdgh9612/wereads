@@ -25,9 +25,29 @@ const Login = () => {
   const goToSignup = () => {
     moveNavigate('/signup');
   };
-  // 로그인 버튼 클릭시 메인 페이지로 이동
+  // fetch : 로그인 버튼 클릭시 메인 페이지로 이동
   const goToMain = () => {
-    moveNavigate('/Main');
+    fetch('/data/Login.json', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.message === 'LOGIN SUCCESS') {
+          alert('로그인 되었습니다.');
+          localStorage.setItem('token', data.message);
+          moveNavigate('/Main');
+        } else {
+          alert('가입되지 않은 정보입니다.');
+        }
+        console.log(data);
+      });
   };
 
   return (
@@ -41,8 +61,18 @@ const Login = () => {
             alt="위코드 로고"
           />
         </div>
-        <UserInput type="text" placeholder="이메일" onChange={userID} />
-        <UserInput type="password" placeholder="비밀번호" onChange={userPW} />
+        <UserInput
+          className="loginInput"
+          type="text"
+          placeholder="이메일"
+          onChange={userID}
+        />
+        <UserInput
+          className="loginInput"
+          type="password"
+          placeholder="비밀번호"
+          onChange={userPW}
+        />
         <UserButton
           className="loginButton"
           text="로그인"
