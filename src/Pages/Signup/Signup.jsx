@@ -87,7 +87,7 @@ const Signup = () => {
         <div className="backButtonFrame">
           <img
             className="backIcon"
-            src="/../images/Back_arrow.svg"
+            src="/images/Back_arrow.svg"
             alt="뒤로버튼"
           />
           <button className="backButton" onClick={goToLogin}>

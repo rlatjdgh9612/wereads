@@ -112,7 +112,6 @@
 
       .fileFrame {
         display: flex;
-        flex-direction: row;
 
         .fileButton {
           display: flex;
@@ -152,7 +151,6 @@
 
         .phonenumberTextFrame {
           display: flex;
-          flex-direction: row;
           justify-content: space-between;
           margin-top: 25px;
 
@@ -170,7 +168,6 @@
 
         .phoneSelectFrame {
           display: flex;
-          flex-direction: row;
 
           .phoneSelectBox {
             width: 29%;
@@ -201,7 +198,6 @@
 
         .birthdayTextFrame {
           display: flex;
-          flex-direction: row;
           justify-content: space-between;
           margin-top: 25px;
 
@@ -219,7 +215,6 @@
 
         .birthdaySelectFrame {
           display: flex;
-          flex-direction: row;
 
           .yearSelectBox {
             width: 30%;
