@@ -1,15 +1,18 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Wrapper from './Components/Wrapper';
 import Login from './Pages/Login/Login';
 import SignupComplete from './Pages/SignupComplete/SignupComplete';
 
 const Router = () => {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/signupcomplete" element={<SignupComplete />} />
-      </Routes>
+      <Wrapper>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="signupcomplete" element={<SignupComplete />} />
+        </Routes>
+      </Wrapper>
     </BrowserRouter>
   );
 };
