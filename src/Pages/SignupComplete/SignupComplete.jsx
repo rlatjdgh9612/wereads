@@ -20,9 +20,10 @@ const SignupComplete = () => {
           className="backIcon"
           src="/images/Back_arrow.svg"
           alt="뒤로 버튼"
-          onClick={goToSignup}
         />
-        <button className="backButton">뒤로</button>
+        <button className="backButton" onClick={goToSignup}>
+          뒤로
+        </button>
       </div>
       <div className="completeFrame">
         <img
