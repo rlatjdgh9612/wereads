@@ -110,8 +110,8 @@ const Signup = () => {
         </div>
         <h1 className="titleText">회원가입</h1>
         <div className="infoTextFrame">
-          <p className="infoText">기본 정보</p>
-          <p className="requiredText">필수 사항</p>
+          <p className="userinfoText">기본 정보</p>
+          <p className="infoOptionalText">필수 사항</p>
         </div>
         <UserInput
           className="signupInput"
@@ -136,8 +136,8 @@ const Signup = () => {
         />
         <div className="etcUserFrame">
           <div className="nicknameTextFrame">
-            <p className="nicknameText">닉네임</p>
-            <p className="selectText">선택 사항</p>
+            <p className="userinfoText">닉네임</p>
+            <p className="infoOptionalText">선택 사항</p>
           </div>
           <input
             className="nicknameInput"
@@ -166,8 +166,8 @@ const Signup = () => {
           </div>
           <div className="phonenumberFrame">
             <div className="phonenumberTextFrame">
-              <p className="phonenumberText">전화번호</p>
-              <p className="selectText">선택 사항</p>
+              <p className="userinfoText">전화번호</p>
+              <p className="infoOptionalText">선택 사항</p>
             </div>
             <div className="phoneSelectFrame">
               <select className="phoneSelectBox">
@@ -184,8 +184,8 @@ const Signup = () => {
           </div>
           <div className="birthdayFrame">
             <div className="birthdayTextFrame">
-              <p className="birthdayText">생일</p>
-              <p className="selectText">선택 사항</p>
+              <p className="userinfoText">생일</p>
+              <p className="infoOptionalText">선택 사항</p>
             </div>
             <div className="birthdaySelectFrame">
               <select className="birthdayBox">

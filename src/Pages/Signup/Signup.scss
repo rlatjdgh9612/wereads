@@ -40,12 +40,12 @@
       justify-content: space-between;
       margin-bottom: 10px;
 
-      .infoText {
+      .userinfoText {
         font-size: 14px;
         font-weight: 400;
       }
 
-      .requiredText {
+      .infoOptionalText {
         font-size: 12px;
         font-weight: 400;
         color: red;
@@ -62,12 +62,12 @@
         justify-content: space-between;
         margin-top: 25px;
 
-        .nicknameText {
+        .userinfoText {
           font-size: 14px;
           font-weight: 400;
         }
 
-        .selectText {
+        .infoOptionalText {
           font-size: 12px;
           font-weight: 400;
           color: #999999;
@@ -157,12 +157,12 @@
           justify-content: space-between;
           margin-top: 25px;
 
-          .phonenumberText {
+          .userinfoText {
             font-size: 14px;
             font-weight: 400;
           }
 
-          .selectText {
+          .infoOptionalText {
             font-size: 12px;
             font-weight: 400;
             color: #999999;
@@ -204,12 +204,12 @@
           justify-content: space-between;
           margin-top: 25px;
 
-          .birthdayText {
+          .userinfoText {
             font-size: 14px;
             font-weight: 400;
           }
 
-          .selectText {
+          .infoOptionalText {
             font-size: 12px;
             font-weight: 400;
             color: #999999;
