@@ -1,7 +1,18 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import UserButton from '../../Components/UserButton';
 import './SignupComplete.scss';
 
 const SignupComplete = () => {
+  const moveNavigate = useNavigate();
+  // 확인 버튼 (로그인 페이지 이동)
+  const goToLogin = () => {
+    moveNavigate('/');
+  };
+  // 뒤로 버튼 (회원가입 페이지 이동)
+  const goToSignup = () => {
+    moveNavigate('/signup');
+  };
   return (
     <div className="signupcomplete">
       <div className="backButtonFrame">
@@ -9,6 +20,7 @@ const SignupComplete = () => {
           className="backIcon"
           src="/images/Back_arrow.svg"
           alt="뒤로 버튼"
+          onClick={goToSignup}
         />
         <button className="backButton">뒤로</button>
       </div>
@@ -20,7 +32,7 @@ const SignupComplete = () => {
         />
         <h1 className="mainText">회원 가입되었습니다!</h1>
         <p className="subText">이제 로그인해주세요.</p>
-        <button className="completeButton">확인</button>
+        <UserButton className="userButton" text="확인" onClick={goToLogin} />
       </div>
     </div>
   );
