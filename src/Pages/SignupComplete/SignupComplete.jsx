@@ -16,11 +16,7 @@ const SignupComplete = () => {
   return (
     <div className="signupcomplete">
       <div className="backButtonFrame">
-        <img
-          className="backIcon"
-          src="/images/Back_arrow.svg"
-          alt="뒤로 버튼"
-        />
+        <img className="backIcon" src="/images/Back_arrow.svg" alt="뒤로버튼" />
         <button className="backButton" onClick={goToSignup}>
           뒤로
         </button>
@@ -29,7 +25,7 @@ const SignupComplete = () => {
         <img
           className="completelogo"
           src="/images/banner_square.svg"
-          alt="완료 로고"
+          alt="완료체크"
         />
         <h1 className="mainText">회원 가입되었습니다!</h1>
         <p className="subText">이제 로그인해주세요.</p>
