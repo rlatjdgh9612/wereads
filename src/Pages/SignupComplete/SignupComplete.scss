@@ -1,15 +1,15 @@
 .signupcomplete {
   width: 100%;
-  height: 100vh;
+  height: 95vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 
   .backButtonFrame {
     display: flex;
     align-items: center;
-    margin: 0 400px 125px 0;
+    margin: 0 400px 170px 0;
 
     .backIcon {
       width: 30px;
