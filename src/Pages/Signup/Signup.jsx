@@ -15,29 +15,43 @@ const Signup = () => {
     nickname: '',
   });
   // 이메일
-  const userEmail = event => {
-    setUserInfo({ ...userInfo, email: event.target.value });
+  const emailChange = event => {
+    const { value } = event.target;
+    setUserInfo(prevUserInfo => ({
+      ...prevUserInfo,
+      email: value,
+    }));
   };
   // 비밀번호
-  const userPassword = event => {
-    setUserInfo({ ...userInfo, password: event.target.value });
+  const passwordChange = event => {
+    const { value } = event.target;
+    setUserInfo(prevUserInfo => ({
+      ...prevUserInfo,
+      password: value,
+    }));
   };
   // 비밀번호 확인
-  const userPasswordConfir = event => {
-    setUserInfo({ ...userInfo, passwordConfir: event.target.value });
+  const passwordConfirChange = event => {
+    const { value } = event.target;
+    setUserInfo(prevUserInfo => ({
+      ...prevUserInfo,
+      passwordConfir: value,
+    }));
   };
   // 닉네임
-  const userNickName = event => {
-    setUserInfo({ ...userInfo, nickname: event.target.value });
+  const nickNameChange = event => {
+    const { value } = event.target;
+    setUserInfo(prevUserInfo => ({
+      ...prevUserInfo,
+      nickname: value,
+    }));
   };
 
-  // 이메일, 비밀번호, 비밀번호 확인 유효성 검사
+  // isVaild 변수 업데이트
   const isVaild =
-    userInfo.email.includes('@') &&
-    userInfo.email.includes('.') &&
+    userInfo.email &&
     userInfo.password.length >= 10 &&
     userInfo.password === userInfo.passwordConfir;
-
   // 이미지 업로드 input
   const handleFileChange = event => {
     const file = event.target.files[0];
@@ -51,7 +65,7 @@ const Signup = () => {
     moveNavigate('/');
   };
   // 회원가입 완료 페이지 이동
-  const goToComplete = () => {
+  const completeSignUp = () => {
     fetch('/data/Signup.json', {
       method: 'POST',
       headers: {
@@ -103,19 +117,22 @@ const Signup = () => {
           className="signupInput"
           type="text"
           placeholder="이메일"
-          onChange={userEmail}
+          value={userInfo.email}
+          onChange={emailChange}
         />
         <UserInput
           className="signupInput"
           type="password"
           placeholder="비밀번호"
-          onChange={userPassword}
+          value={userInfo.password}
+          onChange={passwordChange}
         />
         <UserInput
           className="signupInput"
           type="password"
           placeholder="비밀번호 확인"
-          onChange={userPasswordConfir}
+          value={userInfo.passwordConfir}
+          onChange={passwordConfirChange}
         />
         <div className="etcUserFrame">
           <div className="nicknameTextFrame">
@@ -126,7 +143,8 @@ const Signup = () => {
             className="nicknameInput"
             type="text"
             placeholder="닉네임"
-            onChange={userNickName}
+            value={userInfo.nickname}
+            onChange={nickNameChange}
           />
           <div className="fileFrame">
             <label htmlFor="fileInput" className="fileButton">
@@ -137,11 +155,10 @@ const Signup = () => {
                 type="file"
                 accept="image/*"
                 onChange={handleFileChange}
-                style={{ display: 'none' }}
               />
             </label>
             <input
-              className="fileInput"
+              className="fileDisplay"
               placeholder="파일을 선택해 주세요"
               value={imageName}
               readOnly
@@ -171,17 +188,17 @@ const Signup = () => {
               <p className="selectText">선택 사항</p>
             </div>
             <div className="birthdaySelectFrame">
-              <select className="yearSelectBox">
+              <select className="birthdayBox">
                 {BIRTHDAY_YEAR_LIST.map((year, index) => (
                   <option key={index}>{year}</option>
                 ))}
               </select>
-              <select className="monthSelectBox">
+              <select className="birthdayBox">
                 {BIRTHDAY_MONTH_LIST.map((month, index) => (
                   <option key={index}>{month}</option>
                 ))}
               </select>
-              <select className="daySelectBox">
+              <select className="birthdayBox">
                 {BIRTHDAY_DAY_LIST.map((day, index) => (
                   <option key={index}>{day}</option>
                 ))}
@@ -192,7 +209,7 @@ const Signup = () => {
             <UserButton
               className="signupButton"
               disabled={!isVaild}
-              onClick={goToComplete}
+              onClick={completeSignUp}
               text="회원 가입"
             />
           </div>
