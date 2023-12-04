@@ -1,41 +1,42 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import UserInput from '../../Components/UserInput';
-import './Signup.scss';
 import UserButton from '../../Components/UserButton';
+import './Signup.scss';
 
 const Signup = () => {
-  // 유저 정보(필수 사항)
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordConfir, setPasswordConfir] = useState('');
-  // 유저 정보(선택 사항)
-  const [nickname, setNickname] = useState('');
   // 이미지 업로드
   const [imageName, setImageName] = useState('');
+  // 유저 정보(필수 사항)
+  const [userInfo, setUserInfo] = useState({
+    email: '',
+    password: '',
+    passwordConfir: '',
+    nickname: '',
+  });
   // 이메일
   const userEmail = event => {
-    setEmail(event.target.value);
+    setUserInfo({ ...userInfo, email: event.target.value });
   };
   // 비밀번호
   const userPassword = event => {
-    setPassword(event.target.value);
+    setUserInfo({ ...userInfo, password: event.target.value });
   };
   // 비밀번호 확인
   const userPasswordConfir = event => {
-    setPasswordConfir(event.target.value);
+    setUserInfo({ ...userInfo, passwordConfir: event.target.value });
   };
   // 닉네임
   const userNickName = event => {
-    setNickname(event.target.value);
+    setUserInfo({ ...userInfo, nickname: event.target.value });
   };
 
   // 이메일, 비밀번호, 비밀번호 확인 유효성 검사
-  const isInvaild =
-    email.includes('@') &&
-    email.includes('.') &&
-    password.length >= 10 &&
-    password === passwordConfir;
+  const isVaild =
+    userInfo.email.includes('@') &&
+    userInfo.email.includes('.') &&
+    userInfo.password.length >= 10 &&
+    userInfo.password === userInfo.passwordConfir;
 
   // 이미지 업로드 input
   const handleFileChange = event => {
@@ -57,9 +58,9 @@ const Signup = () => {
         'Content-Type': 'application/json;charset=utf-8',
       },
       body: JSON.stringify({
-        email: email,
-        password: password,
-        nickname: nickname,
+        email: userInfo.email,
+        password: userInfo.password,
+        nickname: userInfo.nickname,
       }),
     })
       .then(response => {
@@ -84,7 +85,11 @@ const Signup = () => {
     <div className="signup">
       <div className="signupInputFrame">
         <div className="backButtonFrame">
-          <img className="backIcon" src="/../images/Back_arrow.svg" />
+          <img
+            className="backIcon"
+            src="/../images/Back_arrow.svg"
+            alt="뒤로버튼"
+          />
           <button className="backButton" onClick={goToLogin}>
             뒤로
           </button>
@@ -186,7 +191,7 @@ const Signup = () => {
           <div className="signupButtonFrame">
             <UserButton
               className="signupButton"
-              disabled={!isInvaild}
+              disabled={!isVaild}
               onClick={goToComplete}
               text="회원 가입"
             />

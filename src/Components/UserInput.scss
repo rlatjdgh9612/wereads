@@ -4,15 +4,7 @@
   border: 1px solid #e0e0e0;
   border-radius: 6px;
   margin-bottom: 7px;
-
-  &.signupInput {
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #e0e0e0;
-    border-radius: 6px;
-    margin-bottom: 7px;
-    &::placeholder {
-      color: #999999;
-    }
+  &::placeholder {
+    color: #999999;
   }
 }
