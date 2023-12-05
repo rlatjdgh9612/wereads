@@ -14,7 +14,6 @@ const Signup = () => {
     passwordConfir: '',
     nickname: '',
   });
-  console.log(userInfo);
   // 이메일, 비밀번호, 비밀번호 확인
   const handleInputChange = event => {
     const { name, value } = event.target;
@@ -23,13 +22,11 @@ const Signup = () => {
       [name]: value,
     }));
   };
-
   // isVaild 변수 업데이트
   const isVaild =
     userInfo.email &&
     userInfo.password.length >= 10 &&
     userInfo.password === userInfo.passwordConfir;
-  console.log(isVaild);
   // 이미지 업로드 input
   const handleFileChange = event => {
     const file = event.target.files[0];
@@ -42,8 +39,8 @@ const Signup = () => {
   const goToLogin = () => {
     moveNavigate('/');
   };
-  // 회원가입 완료 페이지 이동
-  const completeSignUp = () => {
+  // 회원가입 로직
+  const processSignUp = () => {
     fetch('/data/Signup.json', {
       method: 'POST',
       headers: {
@@ -63,7 +60,7 @@ const Signup = () => {
       })
       .then(data => {
         if (data.message === 'SIGNUP SUCCESS') {
-          moveNavigate('/signupcomplete');
+          moveNavigate('/signup-complete');
         } else {
           alert('회원가입에 실패했습니다. 다시 시도해주세요.');
         }
@@ -75,7 +72,7 @@ const Signup = () => {
 
   return (
     <div className="signup">
-      <div className="registrationFrame">
+      <div className="registrationFrame" onChange={handleInputChange}>
         <div className="backButtonFrame">
           <img
             className="backIcon"
@@ -98,7 +95,6 @@ const Signup = () => {
             placeholder="이메일"
             value={userInfo.email}
             name="email"
-            onChange={handleInputChange}
           />
           <UserInput
             className="signupInput"
@@ -106,7 +102,6 @@ const Signup = () => {
             placeholder="비밀번호"
             value={userInfo.password}
             name="password"
-            onChange={handleInputChange}
           />
           <UserInput
             className="signupInput"
@@ -114,7 +109,6 @@ const Signup = () => {
             placeholder="비밀번호 확인"
             value={userInfo.passwordConfir}
             name="passwordConfir"
-            onChange={handleInputChange}
           />
         </div>
         <div className="etcUserFrame">
@@ -127,8 +121,7 @@ const Signup = () => {
             type="text"
             placeholder="닉네임"
             value={userInfo.nickname}
-            name={userInfo.nickname}
-            onChange={handleInputChange}
+            name="nickname"
           />
           <div className="fileInputFrame">
             <label className="fileButton">
@@ -171,17 +164,17 @@ const Signup = () => {
               <p className="infoOptionalText">선택 사항</p>
             </div>
             <div className="birthdaySelectFrame">
-              <select className="birthdayBox">
+              <select className="birthdayBox firstBox">
                 {BIRTHDAY_YEAR_LIST.map((year, index) => (
                   <option key={index}>{year}</option>
                 ))}
               </select>
-              <select className="birthdayBox">
+              <select className="birthdayBox secondBox">
                 {BIRTHDAY_MONTH_LIST.map((month, index) => (
                   <option key={index}>{month}</option>
                 ))}
               </select>
-              <select className="birthdayBox">
+              <select className="birthdayBox thirdBox">
                 {BIRTHDAY_DAY_LIST.map((day, index) => (
                   <option key={index}>{day}</option>
                 ))}
@@ -192,7 +185,7 @@ const Signup = () => {
             <UserButton
               className="signupButton"
               disabled={!isVaild}
-              onClick={completeSignUp}
+              onClick={processSignUp}
               text="회원 가입"
             />
           </div>

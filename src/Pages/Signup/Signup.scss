@@ -183,12 +183,12 @@
             border-radius: 4px;
             color: #999999;
 
-            &:nth-child(1) {
+            &.firstBox {
               width: 30%;
             }
 
-            &:nth-child(2),
-            &:nth-child(3) {
+            &.secondBox,
+            &.thirdBox {
               width: 35%;
               margin-left: 10px;
             }
