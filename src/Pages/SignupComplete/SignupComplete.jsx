@@ -29,7 +29,13 @@ const SignupComplete = () => {
         />
         <h1 className="mainText">회원 가입되었습니다!</h1>
         <p className="subText">이제 로그인해주세요.</p>
-        <UserButton className="userButton" text="확인" onClick={goToLogin} />
+        <div className="buttonFrame">
+          <UserButton
+            className="completeButton"
+            text="확인"
+            onClick={goToLogin}
+          />
+        </div>
       </div>
     </div>
   );
