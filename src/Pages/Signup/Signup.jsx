@@ -14,36 +14,13 @@ const Signup = () => {
     passwordConfir: '',
     nickname: '',
   });
-  // 이메일
-  const emailChange = event => {
-    const { value } = event.target;
-    setUserInfo(prevUserInfo => ({
-      ...prevUserInfo,
-      email: value,
-    }));
-  };
-  // 비밀번호
-  const passwordChange = event => {
-    const { value } = event.target;
-    setUserInfo(prevUserInfo => ({
-      ...prevUserInfo,
-      password: value,
-    }));
-  };
-  // 비밀번호 확인
-  const passwordConfirChange = event => {
-    const { value } = event.target;
-    setUserInfo(prevUserInfo => ({
-      ...prevUserInfo,
-      passwordConfir: value,
-    }));
-  };
-  // 닉네임
-  const nickNameChange = event => {
-    const { value } = event.target;
-    setUserInfo(prevUserInfo => ({
-      ...prevUserInfo,
-      nickname: value,
+  console.log(userInfo);
+  // 이메일, 비밀번호, 비밀번호 확인
+  const handleInputChange = event => {
+    const { name, value } = event.target;
+    setUserInfo(userInfo => ({
+      ...userInfo,
+      [name]: value,
     }));
   };
 
@@ -52,6 +29,7 @@ const Signup = () => {
     userInfo.email &&
     userInfo.password.length >= 10 &&
     userInfo.password === userInfo.passwordConfir;
+  console.log(isVaild);
   // 이미지 업로드 input
   const handleFileChange = event => {
     const file = event.target.files[0];
@@ -119,21 +97,24 @@ const Signup = () => {
             type="text"
             placeholder="이메일"
             value={userInfo.email}
-            onChange={emailChange}
+            name="email"
+            onChange={handleInputChange}
           />
           <UserInput
             className="signupInput"
             type="password"
             placeholder="비밀번호"
             value={userInfo.password}
-            onChange={passwordChange}
+            name="password"
+            onChange={handleInputChange}
           />
           <UserInput
             className="signupInput"
             type="password"
             placeholder="비밀번호 확인"
             value={userInfo.passwordConfir}
-            onChange={passwordConfirChange}
+            name="passwordConfir"
+            onChange={handleInputChange}
           />
         </div>
         <div className="etcUserFrame">
@@ -146,7 +127,8 @@ const Signup = () => {
             type="text"
             placeholder="닉네임"
             value={userInfo.nickname}
-            onChange={nickNameChange}
+            name={userInfo.nickname}
+            onChange={handleInputChange}
           />
           <div className="fileInputFrame">
             <label className="fileButton">
