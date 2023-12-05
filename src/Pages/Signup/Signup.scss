@@ -11,7 +11,7 @@
     margin-bottom: 25px;
   }
 
-  .signupInputFrame {
+  .registrationFrame {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -38,7 +38,7 @@
     .infoTextFrame {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 10px;
+      margin-top: 25px;
 
       .userinfoText {
         font-size: 14px;
@@ -48,31 +48,22 @@
       .infoOptionalText {
         font-size: 12px;
         font-weight: 400;
+        color: #999999;
+      }
+
+      &:not(:first-child) .infoOptionalText {
         color: red;
       }
+    }
+
+    .userInputFrame {
+      margin-top: 13px;
     }
 
     .etcUserFrame {
       display: flex;
       flex-direction: column;
       justify-content: center;
-
-      .nicknameTextFrame {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 25px;
-
-        .userinfoText {
-          font-size: 14px;
-          font-weight: 400;
-        }
-
-        .infoOptionalText {
-          font-size: 12px;
-          font-weight: 400;
-          color: #999999;
-        }
-      }
 
       .nicknameInput {
         width: 100%;
@@ -90,7 +81,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 80px;
+        margin-top: 55px;
 
         &.signupButton {
           width: 100%;
@@ -110,7 +101,7 @@
         }
       }
 
-      .fileFrame {
+      .fileInputFrame {
         display: flex;
 
         .fileButton {
@@ -123,6 +114,10 @@
           border-radius: 4px;
           margin-top: 7px;
           cursor: pointer;
+
+          .selectFileText {
+            font-size: 14px;
+          }
 
           input[type='file'] {
             display: none;
@@ -142,37 +137,16 @@
             color: #999999;
           }
         }
-
-        .fileButtonText {
-          font-size: 14px;
-        }
       }
 
-      .phonenumberFrame {
+      .numberFrame {
         display: flex;
         flex-direction: column;
 
-        .phonenumberTextFrame {
-          display: flex;
-          justify-content: space-between;
-          margin-top: 25px;
-
-          .userinfoText {
-            font-size: 14px;
-            font-weight: 400;
-          }
-
-          .infoOptionalText {
-            font-size: 12px;
-            font-weight: 400;
-            color: #999999;
-          }
-        }
-
-        .phoneSelectFrame {
+        .numberSelectFrame {
           display: flex;
 
-          .phoneSelectBox {
+          .numberBox {
             width: 29%;
             padding: 15px;
             margin-top: 13px;
@@ -181,7 +155,7 @@
             color: #999999;
           }
 
-          .phonenumberInput {
+          .numberInput {
             width: 70%;
             padding: 15px;
             margin-top: 13px;
@@ -199,33 +173,25 @@
         display: flex;
         flex-direction: column;
 
-        .birthdayTextFrame {
-          display: flex;
-          justify-content: space-between;
-          margin-top: 25px;
-
-          .userinfoText {
-            font-size: 14px;
-            font-weight: 400;
-          }
-
-          .infoOptionalText {
-            font-size: 12px;
-            font-weight: 400;
-            color: #999999;
-          }
-        }
-
         .birthdaySelectFrame {
           display: flex;
 
           .birthdayBox {
-            width: 50%;
             padding: 15px;
-            margin: 13px 10px 0 1px;
+            margin-top: 13px;
             border: 1px solid #e0e0e0;
             border-radius: 4px;
             color: #999999;
+
+            &:nth-child(1) {
+              width: 30%;
+            }
+
+            &:nth-child(2),
+            &:nth-child(3) {
+              width: 35%;
+              margin-left: 10px;
+            }
           }
         }
       }

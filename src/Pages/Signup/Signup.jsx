@@ -97,7 +97,7 @@ const Signup = () => {
 
   return (
     <div className="signup">
-      <div className="signupInputFrame">
+      <div className="registrationFrame">
         <div className="backButtonFrame">
           <img
             className="backIcon"
@@ -113,29 +113,31 @@ const Signup = () => {
           <p className="userinfoText">기본 정보</p>
           <p className="infoOptionalText">필수 사항</p>
         </div>
-        <UserInput
-          className="signupInput"
-          type="text"
-          placeholder="이메일"
-          value={userInfo.email}
-          onChange={emailChange}
-        />
-        <UserInput
-          className="signupInput"
-          type="password"
-          placeholder="비밀번호"
-          value={userInfo.password}
-          onChange={passwordChange}
-        />
-        <UserInput
-          className="signupInput"
-          type="password"
-          placeholder="비밀번호 확인"
-          value={userInfo.passwordConfir}
-          onChange={passwordConfirChange}
-        />
+        <div className="userInputFrame">
+          <UserInput
+            className="signupInput"
+            type="text"
+            placeholder="이메일"
+            value={userInfo.email}
+            onChange={emailChange}
+          />
+          <UserInput
+            className="signupInput"
+            type="password"
+            placeholder="비밀번호"
+            value={userInfo.password}
+            onChange={passwordChange}
+          />
+          <UserInput
+            className="signupInput"
+            type="password"
+            placeholder="비밀번호 확인"
+            value={userInfo.passwordConfir}
+            onChange={passwordConfirChange}
+          />
+        </div>
         <div className="etcUserFrame">
-          <div className="nicknameTextFrame">
+          <div className="infoTextFrame">
             <p className="userinfoText">닉네임</p>
             <p className="infoOptionalText">선택 사항</p>
           </div>
@@ -146,12 +148,11 @@ const Signup = () => {
             value={userInfo.nickname}
             onChange={nickNameChange}
           />
-          <div className="fileFrame">
-            <label htmlFor="fileInput" className="fileButton">
-              <span className="fileButtonText">파일 선택</span>
+          <div className="fileInputFrame">
+            <label className="fileButton">
+              <span className="selectFileText">파일 선택</span>
               <input
                 id="fileInput"
-                className="fileInput"
                 type="file"
                 accept="image/*"
                 onChange={handleFileChange}
@@ -164,26 +165,26 @@ const Signup = () => {
               readOnly
             />
           </div>
-          <div className="phonenumberFrame">
-            <div className="phonenumberTextFrame">
+          <div className="numberFrame">
+            <div className="infoTextFrame">
               <p className="userinfoText">전화번호</p>
               <p className="infoOptionalText">선택 사항</p>
             </div>
-            <div className="phoneSelectFrame">
-              <select className="phoneSelectBox">
+            <div className="numberSelectFrame">
+              <select className="numberBox">
                 {PHONENUMBER_LIST.map((number, index) => (
                   <option key={index}>{number}</option>
                 ))}
               </select>
               <input
-                className="phonenumberInput"
+                className="numberInput"
                 type="text"
                 placeholder="휴대폰 번호를 입력해주세요"
               />
             </div>
           </div>
           <div className="birthdayFrame">
-            <div className="birthdayTextFrame">
+            <div className="infoTextFrame">
               <p className="userinfoText">생일</p>
               <p className="infoOptionalText">선택 사항</p>
             </div>
