@@ -1,0 +1,183 @@
+.signup {
+  width: 100%;
+  height: 95vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .titleText {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 25px;
+  }
+
+  .registrationFrame {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .backButtonFrame {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 30px;
+
+      .backIcon {
+        width: 30px;
+        margin: 0 -7px 1px -7px;
+      }
+
+      .backButton {
+        border: none;
+        background: none;
+        font-size: 17px;
+        cursor: pointer;
+      }
+    }
+
+    .infoTextFrame {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 25px;
+
+      .userinfoText {
+        font-size: 14px;
+        font-weight: 400;
+      }
+
+      .infoOptionalText {
+        font-size: 12px;
+        font-weight: 400;
+        color: #999999;
+      }
+
+      &:not(:first-child) .infoOptionalText {
+        color: red;
+      }
+    }
+
+    .userInputFrame {
+      margin-top: 13px;
+    }
+
+    .etcUserFrame {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .nicknameInput {
+        width: 100%;
+        padding: 15px;
+        border: 1px solid #e0e0e0;
+        border-radius: 6px;
+        margin-top: 13px;
+
+        &::placeholder {
+          color: #999999;
+        }
+      }
+
+      .signupButtonFrame {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 55px;
+      }
+
+      .fileInputFrame {
+        display: flex;
+
+        .fileButton {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 96px;
+          height: 40px;
+          border: 1px solid #999999;
+          border-radius: 4px;
+          margin-top: 7px;
+          cursor: pointer;
+
+          .selectFileText {
+            font-size: 14px;
+          }
+
+          .fileInput {
+            display: none;
+          }
+        }
+
+        .fileDisplay {
+          width: 85%;
+          padding: 15px;
+          height: 40px;
+          margin-top: 7px;
+          margin-left: 7px;
+          border: 1px solid #e0e0e0;
+          border-radius: 4px;
+
+          &::placeholder {
+            color: #999999;
+          }
+        }
+      }
+
+      .numberFrame {
+        display: flex;
+        flex-direction: column;
+
+        .numberSelectFrame {
+          display: flex;
+
+          .numberBox {
+            width: 29%;
+            padding: 15px;
+            margin-top: 13px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            color: #999999;
+          }
+
+          .numberInput {
+            width: 70%;
+            padding: 15px;
+            margin-top: 13px;
+            margin-left: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            &::placeholder {
+              color: #999999;
+            }
+          }
+        }
+      }
+
+      .birthdayFrame {
+        display: flex;
+        flex-direction: column;
+
+        .birthdaySelectFrame {
+          display: flex;
+
+          .birthdayBox {
+            padding: 15px;
+            margin-top: 13px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            color: #999999;
+
+            &.yearBox {
+              width: 30%;
+            }
+
+            &.monthBox,
+            &.dayBox {
+              width: 35%;
+              margin-left: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
