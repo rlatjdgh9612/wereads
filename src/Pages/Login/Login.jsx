@@ -50,7 +50,6 @@ const Login = () => {
         } else {
           alert('가입되지 않은 정보입니다.');
         }
-        console.log(data);
       });
   };
 
@@ -66,21 +65,18 @@ const Login = () => {
           />
         </div>
         <UserInput
-          className="loginInput"
           type="text"
           placeholder="이메일"
           value={userInfo.email}
           name="email"
         />
         <UserInput
-          className="loginInput"
           type="password"
           placeholder="비밀번호"
           value={userInfo.password}
           name="password"
         />
         <UserButton
-          className="loginButton"
           text="로그인"
           disabled={!isInvaild}
           onClick={loginProgcess}
