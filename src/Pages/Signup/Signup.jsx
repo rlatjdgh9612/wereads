@@ -11,9 +11,18 @@ const Signup = () => {
   const [userInfo, setUserInfo] = useState({
     email: '',
     password: '',
-    passwordConfir: '',
+    passwordConfirm: '',
     nickname: '',
   });
+  // 이미지 업로드 input
+  const handleFileChange = event => {
+    event.stopPropagation();
+    const file = event.target.files[0];
+    if (file) {
+      setImageName(file.name);
+    }
+  };
+
   // 이메일, 비밀번호, 비밀번호 확인
   const handleInputChange = event => {
     const { name, value } = event.target;
@@ -26,14 +35,7 @@ const Signup = () => {
   const isVaild =
     userInfo.email &&
     userInfo.password.length >= 10 &&
-    userInfo.password === userInfo.passwordConfir;
-  // 이미지 업로드 input
-  const handleFileChange = event => {
-    const file = event.target.files[0];
-    if (file) {
-      setImageName(file.name);
-    }
-  };
+    userInfo.password === userInfo.passwordConfirm;
   // 로그인 페이지 이동
   const moveNavigate = useNavigate();
   const goToLogin = () => {
@@ -104,8 +106,8 @@ const Signup = () => {
           <UserInput
             type="password"
             placeholder="비밀번호 확인"
-            value={userInfo.passwordConfir}
-            name="passwordConfir"
+            value={userInfo.passwordConfirm}
+            name="passwordConfirm"
           />
         </div>
         <div className="etcUserFrame">
@@ -120,10 +122,15 @@ const Signup = () => {
             value={userInfo.nickname}
             name="nickname"
           />
-          <div className="fileInputFrame" onChange={handleFileChange}>
+          <div className="fileInputFrame">
             <label className="fileButton">
               <span className="selectFileText">파일 선택</span>
-              <input id="fileInput" type="file" accept="image/*" />
+              <input
+                className="fileInput"
+                type="file"
+                accept="image/*"
+                onChange={handleFileChange}
+              />
             </label>
             <input
               className="fileDisplay"
