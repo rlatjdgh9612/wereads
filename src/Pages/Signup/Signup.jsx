@@ -90,21 +90,18 @@ const Signup = () => {
         </div>
         <div className="userInputFrame">
           <UserInput
-            className="signupInput"
             type="text"
             placeholder="이메일"
             value={userInfo.email}
             name="email"
           />
           <UserInput
-            className="signupInput"
             type="password"
             placeholder="비밀번호"
             value={userInfo.password}
             name="password"
           />
           <UserInput
-            className="signupInput"
             type="password"
             placeholder="비밀번호 확인"
             value={userInfo.passwordConfir}
@@ -123,15 +120,10 @@ const Signup = () => {
             value={userInfo.nickname}
             name="nickname"
           />
-          <div className="fileInputFrame">
+          <div className="fileInputFrame" onChange={handleFileChange}>
             <label className="fileButton">
               <span className="selectFileText">파일 선택</span>
-              <input
-                id="fileInput"
-                type="file"
-                accept="image/*"
-                onChange={handleFileChange}
-              />
+              <input id="fileInput" type="file" accept="image/*" />
             </label>
             <input
               className="fileDisplay"
@@ -164,17 +156,17 @@ const Signup = () => {
               <p className="infoOptionalText">선택 사항</p>
             </div>
             <div className="birthdaySelectFrame">
-              <select className="birthdayBox firstBox">
+              <select className="birthdayBox yearBox">
                 {BIRTHDAY_YEAR_LIST.map((year, index) => (
                   <option key={index}>{year}</option>
                 ))}
               </select>
-              <select className="birthdayBox secondBox">
+              <select className="birthdayBox monthBox">
                 {BIRTHDAY_MONTH_LIST.map((month, index) => (
                   <option key={index}>{month}</option>
                 ))}
               </select>
-              <select className="birthdayBox thirdBox">
+              <select className="birthdayBox dayBox">
                 {BIRTHDAY_DAY_LIST.map((day, index) => (
                   <option key={index}>{day}</option>
                 ))}
@@ -183,7 +175,6 @@ const Signup = () => {
           </div>
           <div className="signupButtonFrame">
             <UserButton
-              className="signupButton"
               disabled={!isVaild}
               onClick={processSignUp}
               text="회원 가입"
