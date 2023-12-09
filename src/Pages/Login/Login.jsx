@@ -30,7 +30,7 @@ const Login = () => {
     navigate('/signup');
   };
   // fetch : 로그인 버튼 클릭시 메인 페이지로 이동
-  const loginProgcess = () => {
+  const handleLogin = () => {
     fetch('/data/Login.json', {
       method: 'POST',
       headers: {
@@ -45,7 +45,7 @@ const Login = () => {
       .then(data => {
         if (data.message === 'LOGIN SUCCESS') {
           alert('로그인 되었습니다.');
-          localStorage.setItem('token', data.message);
+          localStorage.setItem('token', data.token);
           navigate('/main');
         } else {
           alert('가입되지 않은 정보입니다.');
@@ -76,11 +76,7 @@ const Login = () => {
           value={userInfo.password}
           name="password"
         />
-        <UserButton
-          text="로그인"
-          disabled={!isInvaild}
-          onClick={loginProgcess}
-        />
+        <UserButton text="로그인" disabled={!isInvaild} onClick={handleLogin} />
         <div className="buttonWrapper">
           <button className="actionButton" onClick={goSignupPage}>
             회원 가입
