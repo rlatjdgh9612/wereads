@@ -25,6 +25,7 @@ const MainThreadList = () => {
           <p className="commentTexts">댓글 00</p>
         </div>
       </div>
+
       <div className="footer">
         <UserButton text="글 쓰기" />
       </div>

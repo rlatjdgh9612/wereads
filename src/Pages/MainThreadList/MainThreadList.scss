@@ -2,7 +2,7 @@ $gray-color: #999999;
 
 .mainthread {
   width: 100%;
-  height: 95vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
 
@@ -50,7 +50,7 @@ $gray-color: #999999;
       }
 
       .commentTexts {
-        font-size: 13px;
+        font-size: 16px;
         margin-top: 15px;
         margin-left: 5px;
         color: $gray-color;
