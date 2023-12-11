@@ -19,7 +19,7 @@ const Login = () => {
     }));
   };
   // 유효성 검사
-  const isInvaild =
+  const isVaild =
     userInfo.email.includes('@') &&
     userInfo.email.includes('.') &&
     userInfo.password.length >= 10;
@@ -76,7 +76,7 @@ const Login = () => {
           value={userInfo.password}
           name="password"
         />
-        <UserButton text="로그인" disabled={!isInvaild} onClick={handleLogin} />
+        <UserButton text="로그인" disabled={!isVaild} onClick={handleLogin} />
         <div className="buttonWrapper">
           <button className="actionButton" onClick={goSignupPage}>
             회원 가입
