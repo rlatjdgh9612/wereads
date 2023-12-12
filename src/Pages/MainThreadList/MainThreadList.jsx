@@ -17,7 +17,11 @@ const MainThreadList = () => {
       })
       .then(data => {
         if (Array.isArray(data.data)) {
-          setPostList(data.data);
+          // 데이터를 createdAt 기준으로 최신 순으로 정렬
+          const sortedPosts = data.data.sort((a, b) => {
+            return new Date(b.createdAt) - new Date(a.createdAt);
+          });
+          setPostList(sortedPosts);
         } else {
           console.error('데이터가 배열이 아닙니다');
         }
