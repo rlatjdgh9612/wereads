@@ -70,8 +70,8 @@ $underline-color: #e0e0e0;
     margin: 0 auto;
 
     .actionButtonFrame {
-      align-self: stretch;
-      margin: 20px 0 0 auto;
+      align-self: flex-end;
+      margin: 5px 0 0 auto;
       width: 120px;
     }
   }
