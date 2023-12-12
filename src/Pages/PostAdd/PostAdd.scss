@@ -1,0 +1,74 @@
+$border-color: #e0e0e0;
+$placeholder-color: #999;
+$postbutton-color: #2d71f7;
+$cancelbutton-color: #ffffff;
+
+.postAdd {
+  width: 80%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .profileContainer {
+    display: flex;
+
+    .profileImages {
+      width: 42px;
+      height: 42px;
+      border: 1px solid $border-color;
+      border-radius: 70%;
+    }
+
+    .profileText {
+      font-size: 20px;
+      font-weight: 700;
+      margin-left: 10px;
+    }
+  }
+
+  .postInputContainer {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+
+    .postInput {
+      width: 100%;
+      height: 60vh;
+      padding: 0 0 55vh 15px;
+      margin: 0 0 15px 2px;
+      border: 1px solid $border-color;
+      border-radius: 6px;
+
+      &::placeholder {
+        color: $placeholder-color;
+      }
+    }
+  }
+
+  .postButtonContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    border-top: 1px solid $border-color;
+
+    .postButtons {
+      width: 120px;
+      height: 56px;
+      margin-top: 25px;
+      border: none;
+      border-radius: 6px;
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+      background-color: $postbutton-color;
+      cursor: pointer;
+
+      &:first-child {
+        background-color: $cancelbutton-color;
+        border: 1px solid #2d71f7;
+        color: #2d71f7;
+      }
+    }
+  }
+}
