@@ -18,7 +18,7 @@ const MainThreadList = () => {
           </div>
           <div className="postContentFrame">
             <p className="contentTexts">{post.content}</p>
-            <p className="commentTexts">댓글 00 {post.comments}</p>
+            <p className="commentTexts">{post.comments}</p>
           </div>
         </div>
       ))}
@@ -43,6 +43,7 @@ const POST_LIST = [
       '일라이자 효과는 인간의 사고 과정과 감정을 AI 시스템에 잘못 돌리는 사람들의 경향을 말하며, 따라서 시스템이 실제보다 더 지능적이라고 믿는다. 이 현상은 1966년 MIT 교수 조셉 웨이젠바움이 만든 챗봇인 ELIZA의 이름을 따서 명명되었다.',
     createdAt: '2023-08-16',
     updateAt: '2023-08-17',
+    comments: '댓글 1',
     isUser: true,
   },
   {
@@ -53,6 +54,7 @@ const POST_LIST = [
     content: '배고파 오늘은 뭐먹지?',
     createdAt: '2023-08-17',
     updateAt: '2023-08-18',
+    comments: '댓글 5',
     isUser: false,
   },
   {
@@ -63,6 +65,7 @@ const POST_LIST = [
     content: '그림 그리고 싶어...',
     createdAt: '2023-08-19',
     updateAt: '2023-08-18',
+    comments: '댓글 3',
     isUser: false,
   },
   {
@@ -73,6 +76,7 @@ const POST_LIST = [
     content: '일라이자 효과는 인간의 사고 과정과 감정을....',
     createdAt: '2023-08-19',
     updateAt: '2023-08-20',
+    comments: '댓글 4',
     isUser: true,
   },
   {
@@ -83,6 +87,7 @@ const POST_LIST = [
     content: '성별과 성격과 같은 인간의 특성을 AI 음성 비서에게 돌리기',
     createdAt: '2023-08-20',
     updateAt: '2023-08-21',
+    comments: '댓글 10',
     isUser: false,
   },
   {
@@ -93,6 +98,7 @@ const POST_LIST = [
     content: '에러 체크 잘하기',
     createdAt: '2023-08-21',
     updateAt: '2023-08-22',
+    comments: '댓글 20',
     isUser: false,
   },
 ];
