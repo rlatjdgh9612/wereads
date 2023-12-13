@@ -1,0 +1,80 @@
+$gray-color: #999999;
+$underline-color: #e0e0e0;
+
+.mainthread {
+  width: 100%;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+
+  .scrollWrapper {
+    height: 80vh;
+    overflow-y: auto;
+    flex: 1;
+
+    .postListFrame {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid $underline-color;
+      padding: 10px;
+
+      .postList {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        align-self: stretch;
+
+        .profileImages {
+          width: 45px;
+          height: 45px;
+          border: 1px solid lightgray;
+          border-radius: 70%;
+        }
+
+        .profileNameTexts {
+          font-size: 18px;
+          font-weight: 700;
+          margin-left: 15px;
+        }
+
+        .dateTexts {
+          font-size: 13px;
+          color: $gray-color;
+          margin-left: auto;
+        }
+      }
+
+      .postContentFrame {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+
+        .contentTexts {
+          line-height: 23px;
+        }
+
+        .commentTexts {
+          font-size: 15px;
+          margin: 15px 0 0 5px;
+          color: $gray-color;
+        }
+      }
+    }
+  }
+
+  .footer {
+    width: 100%;
+    min-height: 100px;
+    margin: 0 auto;
+    background-color: white;
+    position: sticky;
+    bottom: 0;
+
+    .actionButtonFrame {
+      align-self: flex-end;
+      margin: 5px 0 0 auto;
+      width: 120px;
+    }
+  }
+}
