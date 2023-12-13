@@ -17,7 +17,6 @@ const MainThreadList = () => {
       })
       .then(data => {
         if (Array.isArray(data.data)) {
-          // 데이터를 createdAt 기준으로 최신 순으로 정렬
           const sortedPosts = data.data.sort((a, b) => {
             return new Date(b.createdAt) - new Date(a.createdAt);
           });
@@ -33,23 +32,25 @@ const MainThreadList = () => {
 
   return (
     <div className="mainthread">
-      {postList.map((post, index) => (
-        <div className="postListFrame" key={index}>
-          <div className="postList">
-            <img
-              className="profileImages"
-              src={post.profileImage}
-              alt="프로필 사진"
-            />
-            <span className="profileNameTexts">{post.nickname}</span>
-            <span className="dateTexts">{post.createdAt}</span>
+      <div className="scrollWrapper">
+        {postList.map((post, index) => (
+          <div className="postListFrame" key={index}>
+            <div className="postList">
+              <img
+                className="profileImages"
+                src={post.profileImage}
+                alt="프로필 사진"
+              />
+              <span className="profileNameTexts">{post.nickname}</span>
+              <span className="dateTexts">{post.createdAt}</span>
+            </div>
+            <div className="postContentFrame">
+              <p className="contentTexts">{post.content}</p>
+              <p className="commentTexts">{post.comments}</p>
+            </div>
           </div>
-          <div className="postContentFrame">
-            <p className="contentTexts">{post.content}</p>
-            <p className="commentTexts">{post.comments}</p>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
       <div className="footer">
         <div className="actionButtonFrame">
           <UserButton text="글 쓰기" />
