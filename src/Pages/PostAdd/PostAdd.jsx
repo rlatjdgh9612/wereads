@@ -1,7 +1,38 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './PostAdd.scss';
 
 const PostAdd = () => {
+  const navigate = useNavigate();
+  const userToken = localStorage.getItem('token');
+  const nickName = localStorage.getItem('nickname');
+  const profileImage = localStorage.getItem('profileImage');
+
+  const handlePost = () => {
+    fetch('http://10.58.52.215:8000/writePost', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        authorization: userToken,
+      },
+      body: JSON.stringify(),
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('네트워크 응답이 올바르지 않습니다');
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (data.message === 'UPLOAD SUCCESS') {
+          alert('등록이 완료되었습니다.');
+          navigate('/main-thread-list');
+        } else {
+          alert('등록에 실패했습니다. 다시 시도해주세요.');
+        }
+      });
+  };
+
   return (
     <div className="postAdd">
       <div className="profileWrapper">
@@ -18,7 +49,9 @@ const PostAdd = () => {
         </div>
         <div className="postButtonContainer">
           <button className="postButtons cancelButton">취소</button>
-          <button className="postButtons actionButton">게시</button>
+          <button className="postButtons actionButton" onClick={handlePost}>
+            게시
+          </button>
         </div>
       </div>
     </div>
