@@ -17,7 +17,7 @@ const PostAdd = () => {
           className="postInput"
           type="text"
           placeholder="스레드를 입력해주세요"
-        ></input>
+        />
       </div>
       <div className="postButtonContainer">
         <button className="postButtons">취소</button>
