@@ -1,10 +1,11 @@
 $border-color: #e0e0e0;
-$normal-color: #000000;
+$placeholder-color: #999;
 $postbutton-color: #2d71f7;
 $cancelbutton-color: #ffffff;
 
-.postEditing {
+.postAdd {
   width: 100%;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -40,12 +41,12 @@ $cancelbutton-color: #ffffff;
         height: 70vh;
         padding: 15px 16px;
         margin: 0 0 15px 2px;
-        border: 1px solid $normal-color;
+        border: 1px solid $border-color;
         border-radius: 6px;
         resize: none;
 
         &::placeholder {
-          color: $normal-color;
+          color: $placeholder-color;
         }
       }
     }
