@@ -3,10 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import './PostAdd.scss';
 
 const PostAdd = () => {
-  const navigate = useNavigate();
+  // 유저 토큰, 닉네임, 프로필 이미지
   const userToken = localStorage.getItem('token');
   const nickName = localStorage.getItem('nickname');
   const profileImage = localStorage.getItem('profileImage');
+
+  // 페이지 이동 하기
+  const navigate = useNavigate();
+  const handleCancel = () => {
+    navigate('/main-thread-list');
+  };
 
   const handlePost = () => {
     fetch('http://10.58.52.215:8000/writePost', {
@@ -48,7 +54,9 @@ const PostAdd = () => {
           <textarea className="postInput" placeholder="스레드를 시작하세요." />
         </div>
         <div className="postButtonContainer">
-          <button className="postButtons cancelButton">취소</button>
+          <button className="postButtons cancelButton" onClick={handleCancel}>
+            취소
+          </button>
           <button className="postButtons actionButton" onClick={handlePost}>
             게시
           </button>
