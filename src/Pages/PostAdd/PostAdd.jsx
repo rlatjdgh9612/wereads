@@ -13,7 +13,7 @@ const PostAdd = () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        authorization: userToken,
+        Authorization: `Bearer ${userToken}`,
       },
       body: JSON.stringify(),
     })

@@ -5,6 +5,10 @@ import './MainThreadList.scss';
 
 const MainThreadList = () => {
   const [postList, setPostList] = useState([]);
+
+  // 유저 토큰 가져오기
+  const userToken = localStorage.getItem('token');
+
   // 포스트 작성 페이지 이동
   const navigate = useNavigate();
   const handlePostAdd = () => {
@@ -14,6 +18,7 @@ const MainThreadList = () => {
   useEffect(() => {
     fetch('/data/Postlist.json', {
       method: 'GET',
+      Authorization: `Bearer ${userToken}`,
     })
       .then(response => {
         if (!response.ok) {
