@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import UserButton from '../../Components/UserButton';
 import './MainThreadList.scss';
 
 const MainThreadList = () => {
   const [postList, setPostList] = useState([]);
+  // 포스트 작성 페이지 이동
+  const navigate = useNavigate();
+  const handlePostAdd = () => {
+    navigate('/post-add');
+  };
 
   useEffect(() => {
     fetch('/data/Postlist.json', {
@@ -53,7 +59,7 @@ const MainThreadList = () => {
       </div>
       <div className="footer">
         <div className="actionButtonFrame">
-          <UserButton text="글 쓰기" />
+          <UserButton text="글 쓰기" onClick={handlePostAdd} />
         </div>
       </div>
     </div>
