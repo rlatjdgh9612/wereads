@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './PostAdd.scss';
 
 const PostAdd = () => {
+  // 포스트 작성(저장) State
+  const [postContent, setPostContent] = useState('');
   // 유저 토큰, 닉네임, 프로필 이미지
   const userToken = localStorage.getItem('token');
   const nickName = localStorage.getItem('nickname');
@@ -21,7 +23,7 @@ const PostAdd = () => {
         'Content-Type': 'application/json;charset=utf-8',
         Authorization: `Bearer ${userToken}`,
       },
-      body: JSON.stringify(),
+      body: JSON.stringify({ content: postContent }),
     })
       .then(response => {
         if (!response.ok) {
@@ -51,7 +53,12 @@ const PostAdd = () => {
           <span className="profileText">Name</span>
         </div>
         <div className="postInputContainer">
-          <textarea className="postInput" placeholder="스레드를 시작하세요." />
+          <textarea
+            className="postInput"
+            placeholder="스레드를 시작하세요."
+            value={postContent}
+            onChange={event => setPostContent(event.target.value)}
+          />
         </div>
         <div className="postButtonContainer">
           <button className="postButtons cancelButton" onClick={handleCancel}>
