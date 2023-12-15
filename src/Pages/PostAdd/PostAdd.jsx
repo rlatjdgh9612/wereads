@@ -45,12 +45,8 @@ const PostAdd = () => {
     <div className="postAdd">
       <div className="profileWrapper">
         <div className="profileContainer">
-          <img
-            className="profileImages"
-            src="/images/profileImage_01.jpg"
-            alt="프로필 사진"
-          />
-          <span className="profileText">Name</span>
+          <img className="profileImages" src={profileImage} alt="프로필 사진" />
+          <span className="profileText">{nickName}</span>
         </div>
         <div className="postInputContainer">
           <textarea
