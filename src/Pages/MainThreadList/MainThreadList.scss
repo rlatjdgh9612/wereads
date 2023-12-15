@@ -43,6 +43,17 @@ $underline-color: #e0e0e0;
           color: $gray-color;
           margin-left: auto;
         }
+
+        .actionButtons {
+          background: none;
+          border: none;
+          cursor: pointer;
+
+          &.deleteButton {
+            color: red;
+            margin-left: 7px;
+          }
+        }
       }
 
       .postContentFrame {
