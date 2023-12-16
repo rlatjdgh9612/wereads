@@ -8,13 +8,6 @@ const MainThreadList = () => {
   const [postList, setPostList] = useState([]);
   // 유저 토큰 가져오기
   const userToken = localStorage.getItem('token');
-  // 포스트 작성 페이지 이동
-  const navigate = useNavigate();
-  const handlePostAdd = (profileImage, nickname) => {
-    localStorage.setItem('profileImage', profileImage);
-    localStorage.setItem('nickname', nickname);
-    navigate('/post-add');
-  };
   // 포스트 데이터
   useEffect(() => {
     fetch('/data/Postlist.json', {
@@ -29,9 +22,9 @@ const MainThreadList = () => {
       })
       .then(data => {
         if (Array.isArray(data.data)) {
-          const sortedPosts = data.data.sort((a, b) => {
-            return new Date(b.createdAt) - new Date(a.createdAt);
-          });
+          const sortedPosts = data.data.sort(
+            (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
+          );
           setPostList(sortedPosts);
         } else {
           console.error('데이터가 배열이 아닙니다');
@@ -42,40 +35,67 @@ const MainThreadList = () => {
       });
   }, [userToken]);
 
-  // 삭제 권한 에러 로직 : 로그인을 안했을 경우
-  const handleDelete = postId => {
-    if (postId === 3) {
-      const postToDelete = postList.find(post => post.postId === postId);
+  // 삭제 권한 로직 (삭제 버튼)
+  const handleDelete = (isUser, postId) => {
+    const postToDelete = postList.find(post => post.isUser === isUser);
+    if (!postToDelete) {
+      console.error('로그인 후 삭제할 수 있습니다.');
+      return;
+    }
 
-      if (!postToDelete) {
-        console.error('로그인 후 삭제할 수 있습니다.');
-        return;
-      }
-
-      if (postToDelete.nickname !== localStorage.getItem('nickname')) {
-        console.error('해당 게시물을 삭제할 권한이 없습니다.');
-        return;
-      }
-    } else {
-      console.error('삭제할 수 없는 게시물 입니다.');
+    const deleteConfirmed = window.confirm('포스트를 삭제하시겠습니까?');
+    if (deleteConfirmed) {
+      fetch(`/data/Delete.json`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userToken}`,
+        },
+        body: JSON.stringify({
+          postId: 1,
+        }),
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('포스트 삭제에 실패했습니다.');
+          }
+          // 삭제 후에는 화면에서 해당 포스트를 제거하거나 상태 업데이트
+          setPostList(prevPosts =>
+            prevPosts.filter(post => post.postId !== postId),
+          );
+          alert('포스트가 삭제되었습니다.');
+        })
+        .catch(error => {
+          console.error('포스트 삭제 오류:', error);
+          alert('포스트 삭제에 실패했습니다.');
+        });
     }
   };
 
-  // 수정 권한 에러 로직 : 로그인을 안했을 경우
-  const handleEdit = postId => {
-    if (postId === 3) {
-      const postToEdit = postList.find(post => post.postId === postId);
-      if (!postToEdit) {
-        console.error('로그인 후 수정할 수 있습니다.');
-        return;
-      }
-      if (postToEdit.nickname !== localStorage.getItem('nickname')) {
-        console.error('해당 게시물을 수정할 권한이 없습니다.');
-        return;
-      }
-      navigate(`/post-editing/${postId}`);
+  // 수정 권한 로직 (수정 버튼)
+  const handleEdit = isUser => {
+    const postToEdit = postList.find(post => post.isUser === isUser);
+    if (!postToEdit) {
+      console.error('로그인 후 수정할 수 있습니다.');
+      return;
+    }
+    navigate('/post-edit', { state: { isUser: true } });
+  };
+
+  // 포스트 작성 페이지 이동
+  const navigate = useNavigate();
+  const handlePostAdd = () => {
+    // 토큰이 있으면 포스트 작성 페이지로 이동
+    if (userToken) {
+      navigate('/post-add'); //
     } else {
-      console.error('수정할 수 없는 게시물 입니다.');
+      // 토큰이 없으면 로그인 페이지로 이동
+      const loginConfirmed = window.confirm(
+        '로그인이 필요합니다. 로그인 하시겠습니까?',
+      );
+      if (loginConfirmed) {
+        navigate('/');
+      }
     }
   };
 
@@ -92,17 +112,17 @@ const MainThreadList = () => {
               />
               <span className="profileNameTexts">{post.nickname}</span>
               <span className="dateTexts">{post.createdAt}</span>
-              {post.postId === 3 && (
+              {post.isUser && (
                 <div>
                   <button
                     className="actionButtons deleteButton"
-                    onClick={() => handleDelete(post.postId)}
+                    onClick={() => handleDelete(post.isUser)}
                   >
                     삭제
                   </button>
                   <button
                     className="actionButtons editButton"
-                    onClick={() => handleEdit(post.postId)}
+                    onClick={() => handleEdit(post.isUser)}
                   >
                     수정
                   </button>
@@ -126,15 +146,7 @@ const MainThreadList = () => {
       </div>
       <div className="footer">
         <div className="actionButtonFrame">
-          <UserButton
-            text="글 쓰기"
-            onClick={() =>
-              handlePostAdd(
-                postList.find(post => post.postId === 3)?.profileImage,
-                postList.find(post => post.postId === 3)?.nickname,
-              )
-            }
-          />
+          <UserButton text="글 쓰기" onClick={handlePostAdd} />
         </div>
       </div>
     </div>

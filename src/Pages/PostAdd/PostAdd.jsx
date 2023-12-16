@@ -13,32 +13,44 @@ const PostAdd = () => {
   // 페이지 이동 하기
   const navigate = useNavigate();
   const handleCancel = () => {
-    navigate('/main-thread-list');
+    if (window.confirm('포스트 작성을 취소하시겠습니까?')) {
+      window.alert('작성이 취소되었습니다.');
+      navigate('/main-thread-list');
+    }
   };
 
+  // 작성한 포스트 등록하기
   const handlePost = () => {
-    fetch('http://10.58.52.215:8000/writePost', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-        Authorization: `Bearer ${userToken}`,
-      },
-      body: JSON.stringify({ content: postContent }),
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('네트워크 응답이 올바르지 않습니다');
-        }
-        return response.json();
+    if (!postContent.trim()) {
+      alert('포스트를 작성해주세요.');
+      return;
+    }
+
+    const postConfirmed = window.confirm('포스트를 등록하시겠습니까?');
+    if (postConfirmed) {
+      fetch('/data/Create.json', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+          Authorization: `Bearer ${userToken}`,
+        },
+        body: JSON.stringify({ content: postContent }),
       })
-      .then(data => {
-        if (data.message === 'UPLOAD SUCCESS') {
-          alert('등록이 완료되었습니다.');
-          navigate('/main-thread-list');
-        } else {
-          alert('등록에 실패했습니다. 다시 시도해주세요.');
-        }
-      });
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('네트워크 응답이 올바르지 않습니다');
+          }
+          return response.json();
+        })
+        .then(data => {
+          if (data.message === 'UPLOAD SUCCESS') {
+            alert('등록이 완료되었습니다.');
+            navigate('/main-thread-list');
+          } else {
+            alert('등록에 실패했습니다. 다시 시도해주세요.');
+          }
+        });
+    }
   };
 
   return (
