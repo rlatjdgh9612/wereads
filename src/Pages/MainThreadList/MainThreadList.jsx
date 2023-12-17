@@ -6,6 +6,8 @@ import './MainThreadList.scss';
 const MainThreadList = () => {
   // 포스트 리스트 관리
   const [postList, setPostList] = useState([]);
+  // 좋아요 상태 관리
+  const [likedPost, setLikedPost] = useState([]);
   // 유저 토큰 가져오기
   const userToken = localStorage.getItem('token');
   // 포스트 데이터
@@ -80,6 +82,55 @@ const MainThreadList = () => {
       return;
     }
     navigate('/post-edit', { state: { isUser: true } });
+  };
+
+  // 좋아요 관리 로직
+  const handleLike = (isUser, postId) => {
+    if (!userToken) {
+      console.error('로그인 후 좋아요를 누를 수 있습니다.');
+      return;
+    }
+    const alreadyLiked = likedPost.includes(postId);
+    const method = alreadyLiked ? 'DELETE' : 'POST';
+
+    fetch('/data/Postlike.json', {
+      method,
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userToken}`,
+      },
+      body: JSON.stringify({
+        postId: 1,
+      }),
+    })
+      .then(response => {
+        if (!response.ok) {
+          if (response.status === 404) {
+            throw new Error('CONTENT_NOT_FOUND');
+          } else {
+            throw new Error('서버 요청 오류');
+          }
+        }
+        return response.json();
+      })
+      .then(() => {
+        // 좋아요 상태 업데이트
+        if (alreadyLiked) {
+          setLikedPost(prevLikedPost =>
+            prevLikedPost.filter(id => id !== postId),
+          );
+        } else {
+          setLikedPost(prevLikedPost => [...prevLikedPost, postId]);
+        }
+      })
+      .catch(error => {
+        console.error('좋아요 요청 오류:', error.message);
+        if (error.message === 'CONTENT_NOT_FOUND') {
+          alert('존재하지 않는 쓰레드입니다.');
+        } else {
+          alert('서버 요청 오류가 발생했습니다.');
+        }
+      });
   };
 
   // 포스트 작성 페이지 이동

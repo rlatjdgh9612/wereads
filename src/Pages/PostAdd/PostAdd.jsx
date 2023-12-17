@@ -13,7 +13,7 @@ const PostAdd = () => {
   // 페이지 이동 하기
   const navigate = useNavigate();
   const handleCancel = () => {
-    if (window.confirm('포스트 작성을 취소하시겠습니까?')) {
+    if (window.confirm('작성을 취소하시겠습니까?')) {
       window.alert('작성이 취소되었습니다.');
       navigate('/main-thread-list');
     }
@@ -34,7 +34,9 @@ const PostAdd = () => {
           'Content-Type': 'application/json;charset=utf-8',
           Authorization: `Bearer ${userToken}`,
         },
-        body: JSON.stringify({ content: postContent }),
+        body: JSON.stringify({
+          content: postContent,
+        }),
       })
         .then(response => {
           if (!response.ok) {
