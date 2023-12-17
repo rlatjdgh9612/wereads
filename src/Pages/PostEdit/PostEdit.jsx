@@ -39,7 +39,17 @@ const PostEdit = () => {
       })
         .then(response => {
           if (!response.ok) {
-            throw new Error('네트워크 응답이 올바르지 않습니다');
+            if (response.status === 403) {
+              throw new Error(
+                '권한이 없습니다. 본인이 작성한 포스트만 수정할 수 있습니다.',
+              );
+            } else if (response.status === 404) {
+              throw new Error(
+                'CONTENT_NOT_FOUND: 해당 스레드를 찾을 수 없습니다.',
+              );
+            } else {
+              throw new Error('네트워크 응답이 올바르지 않습니다');
+            }
           }
           return response.json();
         })
@@ -52,7 +62,13 @@ const PostEdit = () => {
           }
         })
         .catch(error => {
-          alert(`오류가 발생했습니다: ${error.message}`);
+          if (error.message.includes('권한이 없습니다')) {
+            alert(error.message);
+          } else if (error.message.includes('CONTENT_NOT_FOUND')) {
+            alert(error.message);
+          } else {
+            alert(`오류가 발생했습니다: ${error.message}`);
+          }
         });
     }
   };
@@ -69,7 +85,7 @@ const PostEdit = () => {
             className="editInput"
             placeholder="내용 수정하기"
             value={editContent}
-            onChange={event => setEditContent(event.target.value)}
+            onChange={e => setEditContent(e.target.value)}
           ></textarea>
         </div>
         <div className="editButtonContainer">

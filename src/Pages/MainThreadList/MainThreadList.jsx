@@ -39,9 +39,11 @@ const MainThreadList = () => {
 
   // 삭제 권한 로직 (삭제 버튼)
   const handleDelete = (isUser, postId) => {
-    const postToDelete = postList.find(post => post.isUser === isUser);
+    const postToDelete = postList.find(
+      post => post.isUser === isUser && post.postId === postId,
+    );
     if (!postToDelete) {
-      console.error('로그인 후 삭제할 수 있습니다.');
+      alert('로그인 후 삭제할 수 있습니다.');
       return;
     }
 
@@ -54,12 +56,16 @@ const MainThreadList = () => {
           Authorization: `Bearer ${userToken}`,
         },
         body: JSON.stringify({
-          postId: 1,
+          postId: postId,
         }),
       })
         .then(response => {
           if (!response.ok) {
-            throw new Error('포스트 삭제에 실패했습니다.');
+            if (response.status === 404) {
+              throw new Error('CONTENT_NOT_FOUND 에러가 발생했습니다.');
+            } else {
+              throw new Error('포스트 삭제에 실패했습니다.');
+            }
           }
           // 삭제 후에는 화면에서 해당 포스트를 제거하거나 상태 업데이트
           setPostList(prevPosts =>
@@ -68,26 +74,32 @@ const MainThreadList = () => {
           alert('포스트가 삭제되었습니다.');
         })
         .catch(error => {
-          console.error('포스트 삭제 오류:', error);
-          alert('포스트 삭제에 실패했습니다.');
+          console.error('포스트 삭제 오류:', error.message);
+          alert(error.message);
         });
     }
   };
 
   // 수정 권한 로직 (수정 버튼)
-  const handleEdit = isUser => {
-    const postToEdit = postList.find(post => post.isUser === isUser);
+  const handleEdit = (isUser, postId) => {
+    const postToEdit = postList.find(
+      post => post.isUser === isUser && post.postId === postId,
+    );
     if (!postToEdit) {
-      console.error('로그인 후 수정할 수 있습니다.');
+      alert('로그인 후 수정할 수 있습니다.');
       return;
     }
-    navigate('/post-edit', { state: { isUser: true } });
+    // isUser와 postId 정보를 함께 전달하여 수정 페이지로 이동
+    navigate(`/post-edit/${postId}`, { state: { isUser: true } });
   };
 
   // 좋아요 관리 로직
   const handleLike = (isUser, postId) => {
-    if (!userToken) {
-      console.error('로그인 후 좋아요를 누를 수 있습니다.');
+    const postToLike = postList.find(
+      post => post.isUser === isUser && post.postId === postId,
+    );
+    if (!postToLike) {
+      alert('로그인 후 좋아요를 누를 수 있습니다.');
       return;
     }
     const alreadyLiked = likedPost.includes(postId);
@@ -100,13 +112,13 @@ const MainThreadList = () => {
         Authorization: `Bearer ${userToken}`,
       },
       body: JSON.stringify({
-        postId: 1,
+        postId: postId,
       }),
     })
       .then(response => {
         if (!response.ok) {
           if (response.status === 404) {
-            throw new Error('CONTENT_NOT_FOUND');
+            throw new Error('CONTENT_NOT_FOUND 애러가 발생했습니다.');
           } else {
             throw new Error('서버 요청 오류');
           }
@@ -119,8 +131,26 @@ const MainThreadList = () => {
           setLikedPost(prevLikedPost =>
             prevLikedPost.filter(id => id !== postId),
           );
+          // 좋아요 취소 시 해당 글의 좋아요 수 감소
+          setPostList(prevPosts =>
+            prevPosts.map(post => {
+              if (post.postId === postId) {
+                return { ...post, likedPost: post.likedPost - 1 };
+              }
+              return post;
+            }),
+          );
         } else {
           setLikedPost(prevLikedPost => [...prevLikedPost, postId]);
+          // 좋아요 클릭 시 해당 글의 좋아요 수 증가
+          setPostList(prevPosts =>
+            prevPosts.map(post => {
+              if (post.postId === postId) {
+                return { ...post, likedPost: post.likedPost + 1 };
+              }
+              return post;
+            }),
+          );
         }
       })
       .catch(error => {
@@ -183,11 +213,14 @@ const MainThreadList = () => {
             <div className="postContentFrame">
               <p className="contentTexts">{post.content}</p>
               <div className="likeCommentFrame">
-                <p className="likeTexts">좋아요 0</p>
+                <p className="likeTexts">
+                  좋아요 {likedPost.includes(post.postId) ? 1 : 0}
+                </p>
                 <p className="commentTexts">{post.comments}</p>
               </div>
               <img
                 className="likeHearts"
+                onClick={handleLike}
                 src="/images/heart.svg"
                 alt="좋아요"
               />

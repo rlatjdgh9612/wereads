@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './PostAdd.scss';
 
 const PostAdd = () => {
-  // 포스트 작성(저장) State
+  // 포스트 작성(저장)
   const [postContent, setPostContent] = useState('');
   // 유저 토큰, 닉네임, 프로필 이미지
   const userToken = localStorage.getItem('token');
@@ -13,7 +13,7 @@ const PostAdd = () => {
   // 페이지 이동 하기
   const navigate = useNavigate();
   const handleCancel = () => {
-    if (window.confirm('작성을 취소하시겠습니까?')) {
+    if (window.confirm('포스트 작성을 취소하시겠습니까?')) {
       window.alert('작성이 취소되었습니다.');
       navigate('/main-thread-list');
     }
