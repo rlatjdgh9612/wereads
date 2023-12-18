@@ -10,6 +10,7 @@ const MainThreadList = () => {
   const userToken = localStorage.getItem('token');
   // 페이지 이동
   const navigate = useNavigate();
+
   // 포스트 데이터
   useEffect(() => {
     fetch('/data/Postlist.json', {
@@ -37,8 +38,37 @@ const MainThreadList = () => {
       });
   }, [userToken]);
 
+  // 포스트 삭제시 데이터 가져오는 함수
+  const fetchPostData = () => {
+    fetch('/data/Postlist.json', {
+      method: 'GET',
+      Authorization: `Bearer ${userToken}`,
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('네트워크 응답이 올바르지 않습니다');
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (Array.isArray(data.data)) {
+          const sortedPosts = data.data.sort(
+            (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
+          );
+          setPostList(sortedPosts);
+        } else {
+          console.error('데이터가 배열이 아닙니다');
+        }
+        alert('포스트가 삭제되었습니다.');
+      })
+      .catch(error => {
+        console.error('포스트 삭제 오류:', error.message);
+        alert(error.message);
+      });
+  };
+
   // 삭제 권한 로직 (삭제 버튼)
-  const handleDelete = () => {
+  const handleDelete = postId => {
     const userToken = localStorage.getItem('token');
     if (!userToken) {
       alert('로그인 후 삭제할 수 있습니다.');
@@ -46,7 +76,6 @@ const MainThreadList = () => {
     }
     const deleteConfirmed = window.confirm('포스트를 삭제하시겠습니까?');
     if (deleteConfirmed) {
-      // 여기서 삭제된 포스트를 서버에서 실제로 삭제하는 요청(fetch)을 보내고, 성공하면 그때만 서버에서 리스트를 다시 받아오기
       fetch(`/data/Delete.json`, {
         method: 'DELETE',
         headers: {
@@ -54,7 +83,7 @@ const MainThreadList = () => {
           Authorization: `Bearer ${userToken}`,
         },
         body: JSON.stringify({
-          postId: 1,
+          postId: postId,
         }),
       })
         .then(response => {
@@ -66,28 +95,8 @@ const MainThreadList = () => {
             }
             return;
           }
-          // 포스트가 성공적으로 삭제되면 아래의 코드를 실행하여 새로운 리스트 받아오기
-          return fetch('/data/Postlist.json', {
-            method: 'GET',
-            Authorization: `Bearer ${userToken}`,
-          });
-        })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('네트워크 응답이 올바르지 않습니다');
-          }
-          return response.json();
-        })
-        .then(data => {
-          if (Array.isArray(data.data)) {
-            const sortedPosts = data.data.sort(
-              (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
-            );
-            setPostList(sortedPosts);
-          } else {
-            console.error('데이터가 배열이 아닙니다');
-          }
-          alert('포스트가 삭제되었습니다.');
+          // 포스트가 성공적으로 삭제되면 새로운 리스트 받아오기 함수 실행
+          fetchPostData();
         })
         .catch(error => {
           console.error('포스트 삭제 오류:', error.message);
