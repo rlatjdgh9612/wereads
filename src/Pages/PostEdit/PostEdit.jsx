@@ -5,6 +5,7 @@ import './PostEdit.scss';
 const PostEdit = () => {
   // 수정할 포스트 저장
   const [editContent, setEditContent] = useState('');
+  // 유저 정보
   const userToken = localStorage.getItem('token');
   const nickName = localStorage.getItem('nickname');
   const profileImage = localStorage.getItem('profileImage');
