@@ -105,6 +105,52 @@ const MainThreadList = () => {
     }
   };
 
+  // 좋아요 로직
+  let isLiked = false;
+  const handlelike = postId => {
+    const userToken = localStorage.getItem('token');
+    if (!userToken) {
+      alert('로그인 후 좋아요를 누를 수 있습니다.');
+      return;
+    }
+
+    fetch('/data/Postlike.json', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userToken}`,
+      },
+      body: JSON.stringify({
+        postId: postId,
+        isLiked: isLiked ? 0 : 1, // isLiked 값에 따라 반대로 전환해서 전송
+      }),
+    })
+      .then(response => {
+        if (!response.ok) {
+          if (response.status === 404) {
+            throw new Error('CONTENT_NOT_FOUND 애러가 발생했습니다.');
+          } else {
+            throw new Error('서버 요청 오류');
+          }
+        }
+        return response.json();
+      })
+      .then(() => {
+        isLiked = !isLiked; // 좋아요 상태를 반전시킴
+        const currentImage = document.querySelector('.likeHearts').src;
+        if (currentImage.includes('/images/heart.svg')) {
+          // 이미지가 하트면 빈 하트로 변경
+          document.querySelector('.likeHearts').src = '/images/likeHeart.svg';
+        } else {
+          // 이미지가 빈 하트면 하트로 변경
+          document.querySelector('.likeHearts').src = '/images/heart.svg';
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  };
+
   // 수정 권한 로직 (수정 버튼)
   const handleEdit = () => {
     const userToken = localStorage.getItem('token');
@@ -120,8 +166,6 @@ const MainThreadList = () => {
   const handlePostAdd = () => {
     const userToken = localStorage.getItem('token');
     if (!userToken) {
-      navigate('/post-add'); //
-    } else {
       // 토큰이 없으면 로그인 페이지로 이동
       const loginConfirmed = window.confirm(
         '로그인이 필요합니다. 로그인 하시겠습니까?',
@@ -129,6 +173,8 @@ const MainThreadList = () => {
       if (loginConfirmed) {
         navigate('/');
       }
+    } else {
+      navigate('/post-add');
     }
   };
 
@@ -170,7 +216,8 @@ const MainThreadList = () => {
               </div>
               <img
                 className="likeHearts"
-                src="/images/heart.svg"
+                onClick={handlelike}
+                src={isLiked ? '/images/likeHeart.svg' : '/images/heart.svg'}
                 alt="좋아요"
               />
             </div>
