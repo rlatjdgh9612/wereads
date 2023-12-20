@@ -6,6 +6,8 @@ import './MainThreadList.scss';
 const MainThreadList = () => {
   // 포스트 리스트 관리
   const [postList, setPostList] = useState([]);
+  // 좋아요 상태 관리
+  const [isLiked, setIsLiked] = useState(false);
   // 유저 토큰 가져오기
   const userToken = localStorage.getItem('token');
   // 페이지 이동
@@ -13,29 +15,7 @@ const MainThreadList = () => {
 
   // 포스트 데이터
   useEffect(() => {
-    fetch('/data/Postlist.json', {
-      method: 'GET',
-      Authorization: `Bearer ${userToken}`,
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('네트워크 응답이 올바르지 않습니다');
-        }
-        return response.json();
-      })
-      .then(data => {
-        if (Array.isArray(data.data)) {
-          const sortedPosts = data.data.sort(
-            (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
-          );
-          setPostList(sortedPosts);
-        } else {
-          console.error('데이터가 배열이 아닙니다');
-        }
-      })
-      .catch(error => {
-        console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
-      });
+    fetchPostData();
   }, [userToken]);
 
   // 포스트 삭제시 데이터 가져오는 함수
@@ -59,19 +39,39 @@ const MainThreadList = () => {
         } else {
           console.error('데이터가 배열이 아닙니다');
         }
-        alert('포스트가 삭제되었습니다.');
       })
       .catch(error => {
-        console.error('포스트 삭제 오류:', error.message);
+        console.error(
+          '데이터를 불러오는 중 오류가 발생했습니다:',
+          error.message,
+        );
         alert(error.message);
       });
   };
 
-  // 삭제 권한 로직 (삭제 버튼)
-  const handleDelete = postId => {
+  // 로그인 후 이용가능 함수
+  const checkAuth = () => {
     const userToken = localStorage.getItem('token');
     if (!userToken) {
-      alert('로그인 후 삭제할 수 있습니다.');
+      alert('로그인 후 이용할 수 있습니다.');
+      return false;
+    }
+    return true;
+  };
+
+  // 로그인 후 포스트 작성 이용가능 함수
+  const redirectToLoginPage = () => {
+    const loginConfirmed = window.confirm(
+      '로그인이 필요합니다. 로그인 하시겠습니까?',
+    );
+    if (loginConfirmed) {
+      navigate('/');
+    }
+  };
+
+  // 삭제 권한 로직 (삭제 버튼)
+  const handleDelete = postId => {
+    if (!checkAuth()) {
       return;
     }
     const deleteConfirmed = window.confirm('포스트를 삭제하시겠습니까?');
@@ -106,14 +106,12 @@ const MainThreadList = () => {
   };
 
   // 좋아요 로직
-  let isLiked = false;
   const handlelike = postId => {
-    const userToken = localStorage.getItem('token');
-    if (!userToken) {
-      alert('로그인 후 좋아요를 누를 수 있습니다.');
+    if (!checkAuth()) {
       return;
     }
-
+    // isLiked 상태 변경
+    setIsLiked(!isLiked);
     fetch('/data/Postlike.json', {
       method: 'POST',
       headers: {
@@ -122,7 +120,6 @@ const MainThreadList = () => {
       },
       body: JSON.stringify({
         postId: postId,
-        isLiked: isLiked ? 0 : 1, // isLiked 값에 따라 반대로 전환해서 전송
       }),
     })
       .then(response => {
@@ -136,15 +133,8 @@ const MainThreadList = () => {
         return response.json();
       })
       .then(() => {
-        isLiked = !isLiked; // 좋아요 상태를 반전시킴
-        const currentImage = document.querySelector('.likeHearts').src;
-        if (currentImage.includes('/images/heart.svg')) {
-          // 이미지가 하트면 빈 하트로 변경
-          document.querySelector('.likeHearts').src = '/images/likeHeart.svg';
-        } else {
-          // 이미지가 빈 하트면 하트로 변경
-          document.querySelector('.likeHearts').src = '/images/heart.svg';
-        }
+        setIsLiked(!isLiked);
+        fetchPostData();
       })
       .catch(error => {
         console.error('Error:', error);
@@ -152,27 +142,19 @@ const MainThreadList = () => {
   };
 
   // 수정 권한 로직 (수정 버튼)
-  const handleEdit = () => {
-    const userToken = localStorage.getItem('token');
-    if (!userToken) {
-      alert('로그인 후 수정할 수 있습니다.');
+  const handleEdit = postId => {
+    if (!checkAuth()) {
       return;
     } else {
-      navigate('/post-edit');
+      navigate(`/post-edit/${postId}`);
     }
   };
 
   // 포스트 작성 페이지 이동
   const handlePostAdd = () => {
-    const userToken = localStorage.getItem('token');
-    if (!userToken) {
-      // 토큰이 없으면 로그인 페이지로 이동
-      const loginConfirmed = window.confirm(
-        '로그인이 필요합니다. 로그인 하시겠습니까?',
-      );
-      if (loginConfirmed) {
-        navigate('/');
-      }
+    if (!checkAuth()) {
+      redirectToLoginPage();
+      return;
     } else {
       navigate('/post-add');
     }
@@ -195,13 +177,13 @@ const MainThreadList = () => {
                 <div>
                   <button
                     className="actionButtons deleteButton"
-                    onClick={handleDelete}
+                    onClick={() => handleDelete(post.postId)}
                   >
                     삭제
                   </button>
                   <button
                     className="actionButtons editButton"
-                    onClick={handleEdit}
+                    onClick={() => handleEdit(post.postId)}
                   >
                     수정
                   </button>
@@ -211,12 +193,12 @@ const MainThreadList = () => {
             <div className="postContentFrame">
               <p className="contentTexts">{post.content}</p>
               <div className="likeCommentFrame">
-                <p className="likeTexts">좋아요 {post.likedPost}</p>
+                <p className="likeTexts">좋아요 {post.likeCount}</p>
                 <p className="commentTexts">{post.comments}</p>
               </div>
               <img
                 className="likeHearts"
-                onClick={handlelike}
+                onClick={() => handlelike(post.postId)}
                 src={isLiked ? '/images/likeHeart.svg' : '/images/heart.svg'}
                 alt="좋아요"
               />

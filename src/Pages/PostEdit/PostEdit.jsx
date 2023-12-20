@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import './PostEdit.scss';
 
 const PostEdit = () => {
@@ -9,6 +9,34 @@ const PostEdit = () => {
   const userToken = localStorage.getItem('token');
   const nickName = localStorage.getItem('nickname');
   const profileImage = localStorage.getItem('profileImage');
+  // postId 가져오기
+  const { postId } = useParams();
+
+  // 해당 postId의 포스트 데이터 가져오기
+  useEffect(() => {
+    fetch(`/data/Postlist.json?id=${postId}`, {
+      method: 'GET',
+      Authorization: `Bearer ${userToken}`,
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('네트워크 응답이 올바르지 않습니다');
+        }
+        return response.json();
+      })
+      .then(data => {
+        // 가져온 데이터에서 해당 postId의 내용을 가져와서 수정창에 표시
+        const targetPost = data.find(post => post.id === postId);
+        if (targetPost) {
+          setEditContent(targetPost.content);
+        } else {
+          throw new Error('포스트를 찾을 수 없습니다');
+        }
+      })
+      .catch(error => {
+        alert('포스트 데이터를 불러오던 중 오류가 발생했습니다.');
+      });
+  }, [postId, userToken]);
 
   // 페이지 이동 하기 : 취소
   const navigate = useNavigate();
@@ -87,7 +115,7 @@ const PostEdit = () => {
             placeholder="내용 수정하기"
             value={editContent}
             onChange={e => setEditContent(e.target.value)}
-          ></textarea>
+          />
         </div>
         <div className="editButtonContainer">
           <button className="editButtons cancelButton" onClick={handleCancel}>

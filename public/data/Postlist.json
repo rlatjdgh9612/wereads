@@ -8,6 +8,8 @@
       "createdAt": "2023-08-21",
       "updatedAt": "2023-08-22",
       "comments": "댓글 1",
+      "isLiked": false,
+      "likeCount": 0,
       "isUser": true
     },
     {
@@ -18,6 +20,8 @@
       "createdAt": "2023-08-20",
       "updatedAt": "2023-08-21",
       "comments": "댓글 5",
+      "isLiked": false,
+      "likeCount": 2,
       "isUser": false
     },
     {
@@ -28,6 +32,8 @@
       "createdAt": "2023-08-19",
       "updatedAt": "2023-08-20",
       "comments": "댓글 3",
+      "isLiked": false,
+      "likeCount": 5,
       "isUser": false
     },
     {
@@ -38,6 +44,8 @@
       "createdAt": "2023-08-18",
       "updatedAt": "2023-08-19",
       "comments": "댓글 4",
+      "isLiked": false,
+      "likeCount": 3,
       "isUser": false
     },
     {
@@ -48,6 +56,8 @@
       "createdAt": "2023-08-17",
       "updatedAt": "2023-08-18",
       "comments": "댓글 10",
+      "isLiked": false,
+      "likeCount": 7,
       "isUser": false
     },
     {
@@ -58,6 +68,8 @@
       "createdAt": "2023-08-16",
       "updatedAt": "2023-08-17",
       "comments": "댓글 20",
+      "isLiked": false,
+      "likeCount": 9,
       "isUser": false
     }
   ]
