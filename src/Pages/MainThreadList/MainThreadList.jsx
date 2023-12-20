@@ -106,7 +106,7 @@ const MainThreadList = () => {
   };
 
   // 좋아요 로직
-  const handlelike = postId => {
+  const handlelike = (postId, isLiked) => {
     if (!checkAuth()) {
       return;
     }
@@ -132,13 +132,28 @@ const MainThreadList = () => {
         }
         return response.json();
       })
-      .then(() => {
-        setIsLiked(!isLiked);
-        fetchPostData();
+      .then(data => {
+        // 서버에서 받은 정보로 상태 업데이트
+        updateLikeStatus(postId, data.isLiked, data.likeCount);
       })
       .catch(error => {
         console.error('Error:', error);
       });
+  };
+
+  // 좋아요 상태 및 카운트 업데이트 함수
+  const updateLikeStatus = (postId, isLiked, likeCount) => {
+    const updatedPostList = postList.map(post => {
+      if (post.postId === postId) {
+        return {
+          ...post,
+          isLiked: isLiked,
+          likeCount: likeCount,
+        };
+      }
+      return post;
+    });
+    setPostList(updatedPostList);
   };
 
   // 수정 권한 로직 (수정 버튼)
@@ -198,7 +213,7 @@ const MainThreadList = () => {
               </div>
               <img
                 className="likeHearts"
-                onClick={() => handlelike(post.postId)}
+                onClick={() => handlelike(post.postId, isLiked)}
                 src={isLiked ? '/images/likeHeart.svg' : '/images/heart.svg'}
                 alt="좋아요"
               />
