@@ -48,7 +48,7 @@ const PostEdit = () => {
   };
 
   // 포스트 수정 로직
-  const handleEdit = () => {
+  const handleEdit = postId => {
     if (!editContent.trim()) {
       alert('수정할 내용을 입력해주세요.');
       return;
@@ -64,6 +64,7 @@ const PostEdit = () => {
         },
         body: JSON.stringify({
           content: editContent,
+          postId: postId,
         }),
       })
         .then(response => {
