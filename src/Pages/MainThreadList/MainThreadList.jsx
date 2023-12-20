@@ -6,8 +6,6 @@ import './MainThreadList.scss';
 const MainThreadList = () => {
   // 포스트 리스트 관리
   const [postList, setPostList] = useState([]);
-  // 좋아요 상태 관리
-  const [isLiked, setIsLiked] = useState(false);
   // 유저 토큰 가져오기
   const userToken = localStorage.getItem('token');
   // 페이지 이동
@@ -89,7 +87,7 @@ const MainThreadList = () => {
         .then(response => {
           if (!response.ok) {
             if (response.status === 404) {
-              throw new Error('CONTENT_NOT_FOUND 에러가 발생했습니다.');
+              throw new Error('포스트 삭제 과정에서 문제가 발생했습니다.');
             } else {
               throw new Error('포스트 삭제에 실패했습니다.');
             }
@@ -111,7 +109,7 @@ const MainThreadList = () => {
       return;
     }
     // isLiked 상태 변경
-    setIsLiked(!isLiked);
+    const updatedIsLiked = !isLiked;
     fetch('/data/Postlike.json', {
       method: 'POST',
       headers: {
@@ -125,7 +123,7 @@ const MainThreadList = () => {
       .then(response => {
         if (!response.ok) {
           if (response.status === 404) {
-            throw new Error('CONTENT_NOT_FOUND 애러가 발생했습니다.');
+            throw new Error('포스트 좋아요 처리 중 문제가 발생했습니다.');
           } else {
             throw new Error('서버 요청 오류');
           }
@@ -134,7 +132,7 @@ const MainThreadList = () => {
       })
       .then(data => {
         // 서버에서 받은 정보로 상태 업데이트
-        updateLikeStatus(postId, data.isLiked, data.likeCount);
+        updateLikeStatus(postId, updatedIsLiked, data.likeCount);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -213,8 +211,10 @@ const MainThreadList = () => {
               </div>
               <img
                 className="likeHearts"
-                onClick={() => handlelike(post.postId, isLiked)}
-                src={isLiked ? '/images/likeHeart.svg' : '/images/heart.svg'}
+                onClick={() => handlelike(post.postId, post.isLiked)}
+                src={
+                  post.isLiked ? '/images/likeHeart.svg' : '/images/heart.svg'
+                }
                 alt="좋아요"
               />
             </div>
