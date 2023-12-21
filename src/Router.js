@@ -17,7 +17,7 @@ const Router = () => {
           <Route path="/signup-complete" element={<SignupComplete />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/post-add" element={<PostAdd />} />
-          <Route path="/post-edit" element={<PostEdit />} />
+          <Route path="/post-edit/:postId" element={<PostEdit />} />
           <Route path="/main-thread-list" element={<MainThreadList />} />
         </Routes>
       </Wrapper>

@@ -10,7 +10,7 @@ const PostEdit = () => {
   const nickName = localStorage.getItem('nickname');
   const profileImage = localStorage.getItem('profileImage');
   // postId 가져오기
-  const { postId } = useParams();
+  const { id: postId } = useParams();
 
   // 해당 postId의 포스트 데이터 가져오기
   useEffect(() => {
@@ -26,9 +26,8 @@ const PostEdit = () => {
       })
       .then(data => {
         // 가져온 데이터에서 해당 postId의 내용을 가져와서 수정창에 표시
-        const targetPost = data.find(post => post.id === postId);
-        if (targetPost) {
-          setEditContent(targetPost.content);
+        if (data) {
+          setEditContent(data.content);
         } else {
           throw new Error('포스트를 찾을 수 없습니다');
         }

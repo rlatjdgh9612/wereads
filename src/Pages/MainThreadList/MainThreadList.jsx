@@ -16,11 +16,14 @@ const MainThreadList = () => {
     fetchPostData();
   }, [userToken]);
 
-  // 포스트 삭제시 데이터 가져오는 함수
+  // 포스트 데이터 가져오는 함수
   const fetchPostData = () => {
     fetch('/data/Postlist.json', {
       method: 'GET',
-      Authorization: `Bearer ${userToken}`,
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userToken}`,
+      },
     })
       .then(response => {
         if (!response.ok) {
@@ -104,12 +107,10 @@ const MainThreadList = () => {
   };
 
   // 좋아요 로직
-  const handlelike = (postId, isLiked) => {
+  const handlelike = postId => {
     if (!checkAuth()) {
       return;
     }
-    // isLiked 상태 변경
-    const updatedIsLiked = !isLiked;
     fetch('/data/Postlike.json', {
       method: 'POST',
       headers: {
@@ -132,21 +133,21 @@ const MainThreadList = () => {
       })
       .then(data => {
         // 서버에서 받은 정보로 상태 업데이트
-        updateLikeStatus(postId, updatedIsLiked, data.likeCount);
+        fetchPostData();
+        updateLike();
       })
       .catch(error => {
         console.error('Error:', error);
       });
   };
 
-  // 좋아요 상태 및 카운트 업데이트 함수
-  const updateLikeStatus = (postId, isLiked, likeCount) => {
+  // 서버 응답 이후에 상태를 업데이트하는 부분 수정
+  const updateLike = (postId, isLiked) => {
     const updatedPostList = postList.map(post => {
       if (post.postId === postId) {
         return {
           ...post,
           isLiked: isLiked,
-          likeCount: likeCount,
         };
       }
       return post;
@@ -157,7 +158,6 @@ const MainThreadList = () => {
   // 수정 권한 로직 (수정 버튼)
   const handleEdit = postId => {
     if (!checkAuth()) {
-      return;
     } else {
       navigate(`/post-edit/${postId}`);
     }
@@ -167,7 +167,6 @@ const MainThreadList = () => {
   const handlePostAdd = () => {
     if (!checkAuth()) {
       redirectToLoginPage();
-      return;
     } else {
       navigate('/post-add');
     }

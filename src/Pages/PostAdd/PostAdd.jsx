@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './PostAdd.scss';
 
@@ -12,6 +12,14 @@ const PostAdd = () => {
 
   // 페이지 이동 하기
   const navigate = useNavigate();
+  // 유저 토큰 여부에 따라 접근 가능
+  useEffect(() => {
+    if (!userToken) {
+      navigate('/'); // 토큰이 없으면 로그인 페이지로 이동
+    }
+  }, [navigate, userToken]);
+
+  // 포스트 취소
   const handleCancel = () => {
     if (window.confirm('포스트 작성을 취소하시겠습니까?')) {
       window.alert('작성이 취소되었습니다.');
