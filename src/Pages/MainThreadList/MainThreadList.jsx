@@ -172,6 +172,14 @@ const MainThreadList = () => {
     }
   };
 
+  // 댓글 페이지 이동
+  const handleComment = postId => {
+    if (!checkAuth()) {
+    } else {
+      navigate(`/comment/${postId}`);
+    }
+  };
+
   return (
     <div className="mainthread">
       <div className="scrollWrapper">
@@ -206,7 +214,12 @@ const MainThreadList = () => {
               <p className="contentTexts">{post.content}</p>
               <div className="likeCommentFrame">
                 <p className="likeTexts">좋아요 {post.likeCount}</p>
-                <p className="commentTexts">{post.comments}</p>
+                <p
+                  className="commentTexts"
+                  onClick={() => handleComment(post.postId)}
+                >
+                  {post.comments}
+                </p>
               </div>
               <img
                 className="likeHearts"

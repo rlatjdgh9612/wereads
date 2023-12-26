@@ -7,6 +7,7 @@ import Signup from './Pages/Signup/Signup';
 import PostAdd from './Pages/PostAdd/PostAdd';
 import PostEdit from './Pages/PostEdit/PostEdit';
 import MainThreadList from './Pages/MainThreadList/MainThreadList';
+import Comment from './Pages/Comment/Comment';
 
 const Router = () => {
   return (
@@ -19,6 +20,7 @@ const Router = () => {
           <Route path="/post-add" element={<PostAdd />} />
           <Route path="/post-edit/:postId" element={<PostEdit />} />
           <Route path="/main-thread-list" element={<MainThreadList />} />
+          <Route path="/comment/:postId" element={<Comment />} />
         </Routes>
       </Wrapper>
     </BrowserRouter>

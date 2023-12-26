@@ -1,0 +1,52 @@
+{
+  "data": [
+    {
+      "postId": 1,
+      "nickname": "drawing_kim95",
+      "profileImage": "/images/profileImage_03.jpg",
+      "comment": "오늘은 너가 그리고 싶은거 위주로 그려봐!",
+      "updatedAt": "2023.08.21",
+      "isUser": true
+    },
+    {
+      "postId": 2,
+      "nickname": "seongho",
+      "profileImage": "/images/profileImage_01.jpg",
+      "comment": "작가님! 오늘은 저 그려주세요!",
+      "updatedAt": "2023.08.22",
+      "isUser": false
+    },
+    {
+      "postId": 3,
+      "nickname": "wecode",
+      "profileImage": "/images/profileImage_02.jpg",
+      "comment": "이번엔 음식을 한번 그려보는건 어때?",
+      "updatedAt": "2023.08.23",
+      "isUser": false
+    },
+    {
+      "postId": 4,
+      "nickname": "guraeng",
+      "profileImage": "/images/profileImage_04.jpg",
+      "comment": "내 마스코트 그려주세요! 비용 드릴께요!",
+      "updatedAt": "2023.08.24",
+      "isUser": false
+    },
+    {
+      "postId": 5,
+      "nickname": "wecode_hong",
+      "profileImage": "/images/profileImage_05.jpg",
+      "comment": "저번에 전시회 준비하는거 같던데 전시회 한번 준비해보셔야죠!",
+      "updatedAt": "2023.08.25",
+      "isUser": false
+    },
+    {
+      "postId": 6,
+      "nickname": "wecode_lee",
+      "profileImage": "/images/profileImage_06.jpg",
+      "comment": "그림 작가시니 그림과 관련된 프로젝트 하나 만들어 보시죠!",
+      "updatedAt": "2023.08.26",
+      "isUser": false
+    }
+  ]
+}

@@ -69,12 +69,14 @@ const Login = () => {
           placeholder="이메일"
           value={userInfo.email}
           name="email"
+          onChange={handleInputChange}
         />
         <UserInput
           type="password"
           placeholder="비밀번호"
           value={userInfo.password}
           name="password"
+          onChange={handleInputChange}
         />
         <UserButton text="로그인" disabled={!isVaild} onClick={handleLogin} />
         <div className="buttonWrapper">

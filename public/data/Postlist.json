@@ -2,12 +2,12 @@
   "data": [
     {
       "postId": 1,
-      "nickname": "wecode",
-      "profileImage": "https://www.chemicalnews.co.kr/news/photo/202107/4159_10727_3352.png",
-      "content": "일라이자 효과는 인간의 사고 과정과 감정을 AI 시스템에 잘못 돌리는 사람들의 경향을 말하며, 따라서 시스템이 실제보다 더 지능적이라고 믿는다. 이 현상은 1966년 MIT 교수 조셉 웨이젠바움이 만든 챗봇인 ELIZA의 이름을 따서 명명되었다.",
+      "nickname": "drawing_kim95",
+      "profileImage": "https://img.jakpost.net/c/2020/08/26/2020_08_26_103148_1598423727._large.jpg",
+      "content": "심심한데 그림 그리고 싶어...오늘은 뭐그릴까?",
       "createdAt": "2023-08-21",
       "updatedAt": "2023-08-22",
-      "comments": "댓글 1",
+      "comments": "댓글 6",
       "isLiked": false,
       "likeCount": 0,
       "isUser": true
@@ -26,9 +26,9 @@
     },
     {
       "postId": 3,
-      "nickname": "drawing_kim95",
-      "profileImage": "https://img.jakpost.net/c/2020/08/26/2020_08_26_103148_1598423727._large.jpg",
-      "content": "그림 그리고 싶어...",
+      "nickname": "wecode",
+      "profileImage": "https://www.chemicalnews.co.kr/news/photo/202107/4159_10727_3352.png",
+      "content": "일라이자 효과는 인간의 사고 과정과 감정을 AI 시스템에 잘못 돌리는 사람들의 경향을 말하며, 따라서 시스템이 실제보다 더 지능적이라고 믿는다. 이 현상은 1966년 MIT 교수 조셉 웨이젠바움이 만든 챗봇인 ELIZA의 이름을 따서 명명되었다.",
       "createdAt": "2023-08-19",
       "updatedAt": "2023-08-20",
       "comments": "댓글 3",
