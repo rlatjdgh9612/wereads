@@ -1,0 +1,142 @@
+$border-color: #999999;
+$underline-color: #e0e0e0;
+$updates-text-color: #999999;
+$comments-text-color: #999999;
+
+.comment {
+  width: 100%;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+
+  .commentWrapper {
+    height: 80vh;
+    flex: 1;
+
+    .backButtonContainer {
+      display: flex;
+      justify-content: flex-start;
+
+      .backButtonIcon {
+        width: 30px;
+        margin: 0 -7px 1px -7px;
+      }
+
+      .backButton {
+        background: none;
+        border: none;
+        font-size: 17px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .userPostContainer {
+    display: flex;
+    margin-top: 20px;
+
+    .profileImages {
+      width: 42px;
+      height: 42px;
+      border-radius: 70%;
+      border: 1px solid $border-color;
+    }
+
+    .profileNames {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 10px 0 0 13px;
+    }
+
+    .dayTexts {
+      font-size: 15px;
+      margin-top: 13px;
+      color: $updates-text-color;
+      margin-left: auto;
+    }
+  }
+
+  .mainPostFrame {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid $underline-color;
+    margin-top: 15px;
+
+    .postText {
+      line-height: 23px;
+    }
+
+    .postCommentText {
+      margin: 20px 0 20px 0;
+      font-size: 15px;
+      color: $comments-text-color;
+    }
+  }
+
+  .commentActionsFrame {
+    display: flex;
+    margin-top: 20px;
+    width: 100%;
+
+    .actionButton {
+      width: 130px;
+      height: 48px;
+      border: 1px solid $border-color;
+      border-radius: 6px;
+      font-size: 14px;
+      background-color: white;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+  }
+
+  .commentListFrame {
+    display: flex;
+    margin-top: 30px;
+
+    .profileImages {
+      width: 35px;
+      height: 35px;
+      border: 1px solid $border-color;
+      border-radius: 70%;
+    }
+
+    .userInfo {
+      display: flex;
+      flex-direction: column;
+
+      .profileNames {
+        font-size: 18px;
+        font-weight: 600;
+        margin-left: 12px;
+      }
+
+      .commentText {
+        font-size: 14px;
+        margin: 7px 0 0 12px;
+      }
+    }
+
+    .dayUpdates {
+      display: flex;
+      margin-left: auto;
+
+      .updateText {
+        font-size: 15px;
+        color: $comments-text-color;
+      }
+
+      .actionButtons {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+
+        &.deleteButton {
+          color: red;
+          margin-left: 7px;
+        }
+      }
+    }
+  }
+}

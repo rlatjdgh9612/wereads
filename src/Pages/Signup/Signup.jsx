@@ -96,18 +96,21 @@ const Signup = () => {
             placeholder="이메일"
             value={userInfo.email}
             name="email"
+            onChange={handleInputChange}
           />
           <UserInput
             type="password"
             placeholder="비밀번호"
             value={userInfo.password}
             name="password"
+            onChange={handleInputChange}
           />
           <UserInput
             type="password"
             placeholder="비밀번호 확인"
             value={userInfo.passwordConfirm}
             name="passwordConfirm"
+            onChange={handleInputChange}
           />
         </div>
         <div className="etcUserFrame">
@@ -121,6 +124,7 @@ const Signup = () => {
             placeholder="닉네임"
             value={userInfo.nickname}
             name="nickname"
+            onChange={handleInputChange}
           />
           <div className="fileInputFrame">
             <label className="fileButton">

@@ -43,6 +43,17 @@ $underline-color: #e0e0e0;
           color: $gray-color;
           margin-left: auto;
         }
+
+        .actionButtons {
+          background: none;
+          border: none;
+          cursor: pointer;
+
+          &.deleteButton {
+            color: red;
+            margin-left: 7px;
+          }
+        }
       }
 
       .postContentFrame {
@@ -54,10 +65,28 @@ $underline-color: #e0e0e0;
           line-height: 23px;
         }
 
-        .commentTexts {
-          font-size: 15px;
-          margin: 15px 0 0 5px;
-          color: $gray-color;
+        .likeHearts {
+          width: 30px;
+          height: 30px;
+          margin-top: 5px;
+          cursor: pointer;
+        }
+
+        .likeCommentFrame {
+          display: flex;
+
+          .commentTexts {
+            font-size: 15px;
+            margin: 15px 0 0 15px;
+            color: $gray-color;
+            cursor: pointer;
+          }
+
+          .likeTexts {
+            font-size: 15px;
+            margin-top: 15px;
+            color: $gray-color;
+          }
         }
       }
     }
