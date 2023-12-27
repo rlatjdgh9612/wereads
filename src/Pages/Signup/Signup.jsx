@@ -46,7 +46,7 @@ const Signup = () => {
     fetch('/data/Signup.json', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json;charset=utf-8',
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         email: userInfo.email,

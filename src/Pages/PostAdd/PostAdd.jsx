@@ -9,16 +9,8 @@ const PostAdd = () => {
   const userToken = localStorage.getItem('token');
   const nickName = localStorage.getItem('nickname');
   const profileImage = localStorage.getItem('profileImage');
-
   // 페이지 이동 하기
   const navigate = useNavigate();
-  // 유저 토큰 여부에 따라 접근 가능
-  useEffect(() => {
-    if (!userToken) {
-      alert('로그인 후 이용할 수 있습니다.');
-      navigate('/'); // 토큰이 없으면 로그인 페이지로 이동
-    }
-  }, [navigate, userToken]);
 
   // 포스트 취소
   const handleCancel = () => {
