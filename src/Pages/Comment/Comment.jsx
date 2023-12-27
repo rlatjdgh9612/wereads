@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './Comment.scss';
 import UserInput from '../../Components/UserInput';
 
@@ -11,12 +11,14 @@ const Comment = () => {
   // 유저 프로필, 닉네임
   const nickName = localStorage.getItem('nickname');
   const profileImage = localStorage.getItem('profileImage');
+  // postId 가져오기
+  const { id: postId } = useParams();
   // 페이지 이동
   const navigate = useNavigate();
 
   // 댓글 리스트 데이터
   useEffect(() => {
-    fetch('/data/Commentlist.json', {
+    fetch(`/data/Commentlist.json?id=${postId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -78,7 +80,7 @@ const Comment = () => {
           <span className="postText">
             심심한데 그림 그리고 싶어...오늘은 뭐그릴까?
           </span>
-          <p className="postCommentText">댓글 0</p>
+          <p className="postCommentText">댓글 6</p>
         </div>
         <div className="commentActionsFrame">
           <UserInput type="text" placeholder="댓글을 작성해주세요." />
