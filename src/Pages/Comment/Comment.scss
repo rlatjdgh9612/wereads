@@ -90,51 +90,56 @@ $comments-text-color: #999999;
     }
   }
 
-  .commentListFrame {
-    display: flex;
-    margin-top: 30px;
+  .listContainer {
+    overflow-y: auto;
+    height: 500px;
 
-    .profileImages {
-      width: 35px;
-      height: 35px;
-      border: 1px solid $border-color;
-      border-radius: 70%;
-    }
-
-    .userInfo {
+    .commentListFrame {
       display: flex;
-      flex-direction: column;
+      margin-top: 30px;
 
-      .profileNames {
-        font-size: 18px;
-        font-weight: 600;
-        margin-left: 12px;
+      .profileImages {
+        width: 35px;
+        height: 35px;
+        border: 1px solid $border-color;
+        border-radius: 70%;
       }
 
-      .commentText {
-        font-size: 14px;
-        margin: 7px 0 0 12px;
+      .userInfo {
+        display: flex;
+        flex-direction: column;
+
+        .profileNames {
+          font-size: 18px;
+          font-weight: 600;
+          margin-left: 12px;
+        }
+
+        .commentText {
+          font-size: 14px;
+          margin: 7px 0 0 12px;
+        }
       }
-    }
 
-    .dayUpdates {
-      display: flex;
-      margin-left: auto;
+      .dayUpdates {
+        display: flex;
+        margin-left: auto;
 
-      .updateText {
-        font-size: 15px;
-        color: $comments-text-color;
-      }
+        .updateText {
+          font-size: 15px;
+          color: $comments-text-color;
+        }
 
-      .actionButtons {
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 14px;
+        .actionButtons {
+          background: none;
+          border: none;
+          cursor: pointer;
+          font-size: 14px;
 
-        &.deleteButton {
-          color: red;
-          margin-left: 7px;
+          &.deleteButton {
+            color: red;
+            margin-left: 7px;
+          }
         }
       }
     }
