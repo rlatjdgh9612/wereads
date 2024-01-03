@@ -47,6 +47,22 @@
       "comment": "그림 작가시니 그림과 관련된 프로젝트 하나 만들어 보시죠!",
       "updatedAt": "2023.08.26",
       "isUser": false
+    },
+    {
+      "postId": 7,
+      "nickname": "shk_9505",
+      "profileImage": "/images/profileImage_03.jpg",
+      "comment": "같이 여행가면서 그림이나 그리자 ㅋㅋ 그림 챙기고 얼렁 나오셈!",
+      "updatedAt": "2023.08.27",
+      "isUser": false
+    },
+    {
+      "postId": 8,
+      "nickname": "juyoung_0211",
+      "profileImage": "/images/profileImage_05.jpg",
+      "comment": "우왕..대단해!",
+      "updatedAt": "2023.08.28",
+      "isUser": false
     }
   ]
 }

@@ -86,28 +86,30 @@ const Comment = () => {
           <UserInput type="text" placeholder="댓글을 작성해주세요." />
           <button className="actionButton">댓글 개시</button>
         </div>
-        {commentList.map((comment, index) => (
-          <div className="commentListFrame" key={index}>
-            <img
-              className="profileImages"
-              src={comment.profileImage}
-              alt="프로필 사진"
-            />
-            <div className="userInfo">
-              <span className="profileNames">{comment.nickname}</span>
-              <p className="commentText">{comment.comment}</p>
+        <div className="listContainer">
+          {commentList.map((comment, index) => (
+            <div className="commentListFrame" key={index}>
+              <img
+                className="profileImages"
+                src={comment.profileImage}
+                alt="프로필 사진"
+              />
+              <div className="userInfo">
+                <span className="profileNames">{comment.nickname}</span>
+                <p className="commentText">{comment.comment}</p>
+              </div>
+              <div className="dayUpdates">
+                <span className="updateText">{comment.updatedAt}</span>
+                {comment.isUser && (
+                  <div>
+                    <button className="actionButtons deleteButton">삭제</button>
+                    <button className="actionButtons editButton">수정</button>
+                  </div>
+                )}
+              </div>
             </div>
-            <div className="dayUpdates">
-              <span className="updateText">{comment.updatedAt}</span>
-              {comment.isUser && (
-                <div>
-                  <button className="actionButtons deleteButton">삭제</button>
-                  <button className="actionButtons editButton">수정</button>
-                </div>
-              )}
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
