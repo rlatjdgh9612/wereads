@@ -5,8 +5,7 @@
 ## 팀원 소개
 Front-End(1명) : 김성호
 
-## 프로젝트 소개
-Wereads Project는 META의 소셜 미디어 서비스인 Thread를 참고하여 개발한 개인 프로젝트입니다. 
+## 프로젝트 소스코드
 
 Wereads 프론트엔드 소스 코드는 [여기](https://github.com/rlatjdgh9612/wereads)에 있습니다.
 
