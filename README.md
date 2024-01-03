@@ -10,6 +10,9 @@ Wereads Project는 META의 소셜 미디어 서비스인 Thread를 참고하여 
 
 Wereads 프론트엔드 소스 코드는 [여기](https://github.com/rlatjdgh9612/wereads)에 있습니다.
 
+## 프로젝트 기간
+2023.11.27 ~ 2023.12.27
+
 ## Front-End 기술스택
 - Frontend: [React.js](https://reactjs.org/)
 
