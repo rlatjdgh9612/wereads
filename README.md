@@ -73,9 +73,10 @@ npm start
 - 수정을 취소하고자 할경우 수정 버튼을 누르면 포스트 수정을 취소 할것인지에 대한 내용을 알림창을 띄워서 사용자에게 보여주도록 구현하였습니다.
 
 #### 7) 댓글 작성 페이지
-<img src="https://github.com/rlatjdgh9612/wereads/assets/78453933/4790aa7c-0d83-40b8-9d7a-2f325ae47d5a">
+<img width="532" src="https://github.com/rlatjdgh9612/wereads/assets/78453933/3a567884-409b-43a1-abaf-28587d1ef41e">
 
 - 댓글 작성 페이지는 로그인한 유저에 한해 댓글을 작성할수 있도록 입력창과 버튼으로 구성했고, 댓글 리스트는 Mock Data를 이용해 최신순으로 List를 나열했습니다.
+- 댓글 List 들은 스크롤바를 이용해 밑에 있는 댓글들을 확인할 수 있습니다.
 
 
 ## Reference
