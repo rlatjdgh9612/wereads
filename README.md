@@ -1,15 +1,17 @@
 # Wereads
 ### 사람들이 자신의 생각과 리뷰를 공유하고 소통하기 위한 커뮤니티 플랫폼 입니다.
 
+### 프로젝트 소개
+- 1차 프로젝트때 시간상 구현하지 못했던 내용들을 전체적으로 보충하고 실무수준의 프로젝트로 구현하기 위한 목적으로 개발되었습니다.
+
 ## 팀원 소개
-Front-End(1명) : 김성호
+- Front-End(1명) : 김성호
 
 ## 프로젝트 소스코드
-
-Wereads 프론트엔드 소스 코드는 [여기](https://github.com/rlatjdgh9612/wereads)에 있습니다.
+- Wereads 프론트엔드 소스 코드는 [여기](https://github.com/rlatjdgh9612/wereads)에 있습니다.
 
 ## 프로젝트 기간
-2023.11.27 ~ 2023.12.27
+- 2023.11.27 ~ 2023.12.27
 
 ## Front-End 기술스택
 - Frontend: [React.js](https://reactjs.org/)
