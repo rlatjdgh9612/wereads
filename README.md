@@ -1,5 +1,5 @@
 # Wereads
-### 사람들이 자신의 생각과 리뷰를 공유하고 소통하기 위한 커뮤니티 플랫폼 입니다.
+### 사람들이 자신의 생각과 리뷰를 공유하고 소통하기 위한 SNS 커뮤니티 플랫폼 입니다.
 ![KakaoTalk_Photo_2024-01-05-15-00-21](https://github.com/rlatjdgh9612/wereads/assets/78453933/ecc08ba8-2649-424e-8d4c-4414dc1237e8)
 
 
