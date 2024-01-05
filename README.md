@@ -7,7 +7,8 @@
 - 1차 프로젝트때 시간상 구현하지 못했던 내용들을 전체적으로 보충하고 실무수준의 프로젝트로 구현하기 위한 목적으로 개발되었습니다.
 
 ## 팀원 소개
-- Front-End(1명) : 김성호
+- Front-End Developer(1명) : 김성호
+- Pamphlet Designer : 김성호
 
 ## 프로젝트 소스코드
 - Wereads 프론트엔드 소스 코드는 [여기](https://github.com/rlatjdgh9612/wereads)에 있습니다.
