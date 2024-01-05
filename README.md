@@ -1,5 +1,7 @@
 # Wereads
 ### 사람들이 자신의 생각과 리뷰를 공유하고 소통하기 위한 커뮤니티 플랫폼 입니다.
+![KakaoTalk_Photo_2024-01-05-15-00-21](https://github.com/rlatjdgh9612/wereads/assets/78453933/ecc08ba8-2649-424e-8d4c-4414dc1237e8)
+
 
 ## 프로젝트 소개
 - 1차 프로젝트때 시간상 구현하지 못했던 내용들을 전체적으로 보충하고 실무수준의 프로젝트로 구현하기 위한 목적으로 개발되었습니다.
@@ -34,14 +36,15 @@ npm start
 
 ## 페이지 UI 소개
 #### 1) 로그인 페이지
-<img src="https://github.com/rlatjdgh9612/wereads/assets/78453933/0d8d447e-ecd8-49ac-adb2-67f1f9ac5139">
+<img width="500" height="700" src="https://github.com/rlatjdgh9612/wereads/assets/78453933/ca64afc1-71c0-4aa6-96ac-a89fad0b16c6">
 
 - 로그인 페이지는 유저의 이메일, 비밀번호를 입력하는 입력창과 로그인 버튼, 회원가입 & 비밀번호 찾기 버튼으로 구성되어 있습니다.
 - 이메일은 이메일 형식으로 입력해야 하고, 비밀번호는 6자리 이상일때 유효성 검사를 부여하여 로그인 버튼이 활성화 되도록 구현하였습니다.
 - 회원가입 하기 버튼은 text 형식으로 표현하였고, 버튼을 클릭했을때 회원가입 페이지로 이동할 수 있도록 하였습니다.
 
 #### 2) 회원 가입 페이지
-<img src="https://github.com/rlatjdgh9612/wereads/assets/78453933/220504e8-fcda-4131-bae7-3d46cb3b5aa2">
+<img width="500" height="700" src="https://github.com/rlatjdgh9612/wereads/assets/78453933/33ab24f2-b11a-4779-906a-cef576b79fb9">
+
 
 - 회원가입 페이지는 미가입 유저가 필수 정보 입력란과 선택 정보 입력란으로 구성하여 미가입 유저가 쉽게 회원가입 할 수 있도록 유도하였습니다.
 - 이메일은 로그인 입력창과 마찬가지로 이메일 형식, 비밀번호는 대문자, 소문자, 특수문자 상관없이 6자리 이상으로 입력, 비밀번호 확인 창에서 똑같은 비밀번호를 입력하면 회원가입 하기 버튼이 활성화 되도록 구현하였습니다.
@@ -49,13 +52,15 @@ npm start
 - 뒤로 버튼을 누르면 로그인 페이지로 돌아갑니다.
 
 #### 3) 회원가입 완료 페이지
-<img src="https://github.com/rlatjdgh9612/wereads/assets/78453933/a512ab37-55ca-48ce-a2b2-ba54fedb1243">
+<img width="500" height="700" src="https://github.com/rlatjdgh9612/wereads/assets/78453933/9c52c156-0b77-4ed8-ad30-17d6def46a9b">
+
 
 - 회원가입 하기 버튼을 누르면 다음과 같이 회원가입이 완료되었다는 표시를 사용자에게 보여주고 확인 버튼을 누르면 로그인 페이지로 이동하게 됩니다.
 - 뒤로 버튼을 누르면 회원가입 페이지로 이동됩니다.
 
 #### 4) 포스트 리스트 페이지
-<img src="https://github.com/rlatjdgh9612/wereads/assets/78453933/3380945d-95a1-49e8-ac03-f131788c7e24">
+<img width="500" height="700" src="https://github.com/rlatjdgh9612/wereads/assets/78453933/fa915e68-3853-49de-bf06-f8583c38c57d">
+
 
 - 로그인에 성공하면 포스트 List 들을 최신순으로 작성된 순서대로 List들을 보여주도록 구성하였습니다.
 - 여기서 userToken이 없거나 로그인이 안된 상태에서 자신이 작성한 포스트를 수정 또는 삭제하려고 시도한다면 CONTENT_NOT_FOUND 권한 에러를 발생시킵니다.
@@ -63,21 +68,23 @@ npm start
 - 로그인이 안된 상태에서 글 쓰기 버튼을 누르려고 하면 로그인후 이용할 수 있도록 사용자에게 알림창으로 안내하고 확인버튼을 누르면 로그인 페이지로 이동할 수 있도록 구성하였습니다.
 
 #### 5) 포스트 작성 페이지
-<img width="500" height="700" src="https://github.com/rlatjdgh9612/wereads/assets/78453933/73679d29-bff9-4446-a30c-3b56a592f43f">
+<img width="500" height="700" src="https://github.com/rlatjdgh9612/wereads/assets/78453933/944a8d3a-f3fa-46ee-bc77-949a50ca25fd">
 
 - 리스트 페이지에서 글 쓰기 버튼을 누르면 작성 페이지로 이동되며 프로필 이미지와 닉네임을 가져와 표시할 수 있도록 페이지를 구성하였습니다.
 - 리스트를 작성하지 않은 상태에서 게시 버튼을 누르면 한 글자 이상 입력해달라는 알림창을 띄워서 작성을 유도할 수 있도록 구현하였습니다.
 - 취소 버튼을 누르면 포스트 작성 취소여부를 확인할 수 있도록 알림창을 띄워서 사용자에게 보여주도록 구현하였습니다.
 
 #### 6) 포스트 수정 페이지
-<img src="https://github.com/rlatjdgh9612/wereads/assets/78453933/add99b15-9286-4423-9d8a-8168c8a72114">
+<img width="500" height="700" src="https://github.com/rlatjdgh9612/wereads/assets/78453933/fb96e7f4-8393-4478-bb0c-8d8b5123de47">
+
 
 - 리스트 페이지에서 로그인 된 유저에 한해서만 수정 버튼을 눌렀을때 수정 페이지로 이동할수 있도록 구현하였습니다.
 - 작성 페이지와 마찬가지로 게시 버튼을 누르면 수정할 내용에 대한 알림을 띄워 수정한 내용을 반영할 것인지에 대해 알려주도록 구현하였습니다.
 - 수정을 취소하고자 할경우 수정 버튼을 누르면 포스트 수정을 취소 할것인지에 대한 내용을 알림창을 띄워서 사용자에게 보여주도록 구현하였습니다.
 
 #### 7) 댓글 작성 페이지
-<img width="532" src="https://github.com/rlatjdgh9612/wereads/assets/78453933/3a567884-409b-43a1-abaf-28587d1ef41e">
+<img width="500" height="700" src="https://github.com/rlatjdgh9612/wereads/assets/78453933/057bde89-a0f4-48f5-8d40-e566af1a76af">
+
 
 - 댓글 작성 페이지는 로그인한 유저에 한해 댓글을 작성할수 있도록 입력창과 버튼으로 구성했고, 댓글 리스트는 Mock Data를 이용해 최신순으로 List를 나열했습니다.
 - 댓글 List 들은 스크롤바를 이용해 밑에 있는 댓글들을 확인할 수 있습니다.
