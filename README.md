@@ -7,7 +7,7 @@
 
 ## 팀원 소개
 - Front-End Developer & Template Designer : 김성호
-(개인 프로젝트 입니다.)
+- 개인 단독 프로젝트 입니다.
 
 ## 프로젝트 소스코드
 - Wereads 프론트엔드 소스 코드는 [여기](https://github.com/rlatjdgh9612/wereads)에 있습니다.
