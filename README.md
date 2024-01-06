@@ -2,13 +2,12 @@
 ### 사람들이 자신의 생각과 리뷰를 공유하고 소통하기 위한 SNS 커뮤니티 플랫폼 입니다.
 ![KakaoTalk_Photo_2024-01-05-15-00-21](https://github.com/rlatjdgh9612/wereads/assets/78453933/ecc08ba8-2649-424e-8d4c-4414dc1237e8)
 
-
 ## 프로젝트 소개
 - 1차 프로젝트때 시간상 구현하지 못했던 내용들을 전체적으로 보충하고 실무수준의 프로젝트로 구현하기 위한 목적으로 개발되었습니다.
 
 ## 팀원 소개
-- Front-End Developer(1명) : 김성호
-- Template Designer : 김성호
+- Front-End Developer & Template Designer : 김성호
+(개인 프로젝트 입니다.)
 
 ## 프로젝트 소스코드
 - Wereads 프론트엔드 소스 코드는 [여기](https://github.com/rlatjdgh9612/wereads)에 있습니다.
