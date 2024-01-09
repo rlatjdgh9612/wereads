@@ -22,7 +22,7 @@ const Login = () => {
   const isVaild =
     userInfo.email.includes('@') &&
     userInfo.email.includes('.') &&
-    userInfo.password.length >= 10;
+    userInfo.password.length >= 6;
   // 페이지 이동
   const navigate = useNavigate();
   // 회원가입 페이지 이동
@@ -84,7 +84,7 @@ const Login = () => {
             회원 가입
           </button>
           <div className="wall">|</div>
-          <button className="actionButton">비밀번호 찾기</button>
+          <button className="actionButton findPassword">비밀번호 찾기</button>
         </div>
       </div>
     </div>
