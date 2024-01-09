@@ -34,7 +34,7 @@ const Signup = () => {
   // isVaild 변수 업데이트
   const isVaild =
     userInfo.email &&
-    userInfo.password.length >= 10 &&
+    userInfo.password.length >= 6 &&
     userInfo.password === userInfo.passwordConfirm;
   // 로그인 페이지 이동
   const moveNavigate = useNavigate();
