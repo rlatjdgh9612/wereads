@@ -1,6 +1,7 @@
 # Wereads
 ### 사람들이 자신의 생각과 리뷰를 공유하고 소통하기 위한 SNS 커뮤니티 플랫폼 입니다.
-![KakaoTalk_Photo_2024-01-05-15-00-21](https://github.com/rlatjdgh9612/wereads/assets/78453933/ecc08ba8-2649-424e-8d4c-4414dc1237e8)
+<img width="1377" alt="스크린샷 2024-01-09 오후 5 48 57" src="https://github.com/rlatjdgh9612/wereads/assets/78453933/0000eade-8905-4298-b367-c926e3d847ef">
+
 
 ## 프로젝트 소개
 - 1차 프로젝트때 시간상 구현하지 못했던 내용들을 전체적으로 보충하고 실무수준의 프로젝트로 구현하기 위한 목적으로 개발되었습니다.
@@ -36,11 +37,12 @@ npm start
 
 ## 페이지 UI 소개
 #### 1) 로그인 페이지
-<img width="500" height="700" src="https://github.com/rlatjdgh9612/wereads/assets/78453933/ca64afc1-71c0-4aa6-96ac-a89fad0b16c6">
+<img width="500" height="700" src="https://github.com/rlatjdgh9612/wereads/assets/78453933/92dcdaf2-00b2-4145-ac27-4970440ddfe2">
+
 
 - 로그인 페이지는 유저의 이메일, 비밀번호를 입력하는 입력창과 로그인 버튼, 회원가입 & 비밀번호 찾기 버튼으로 구성되어 있습니다.
 - 이메일은 이메일 형식으로 입력해야 하고, 비밀번호는 6자리 이상일때 유효성 검사를 부여하여 로그인 버튼이 활성화 되도록 구현하였습니다.
-- 회원가입 하기 버튼은 text 형식으로 표현하였고, 버튼을 클릭했을때 회원가입 페이지로 이동할 수 있도록 하였습니다.
+- 회원가입 하기 버튼은 사용자의 시인성을 높게 하기 위해 색깔별로 구분해서 표시하였고, 버튼을 클릭했을때 회원가입 페이지로 이동할 수 있도록 하였습니다.
 
 #### 2) 회원 가입 페이지
 <img width="500" height="700" src="https://github.com/rlatjdgh9612/wereads/assets/78453933/33ab24f2-b11a-4779-906a-cef576b79fb9">
